@@ -53,3 +53,4 @@ class Environment:
             for j in range(self.sizeY):
                 self.grilla[i][j].visited = False
     
+   

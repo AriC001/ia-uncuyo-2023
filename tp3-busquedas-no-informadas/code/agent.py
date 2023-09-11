@@ -27,3 +27,26 @@ class Agent:
                     cola.append(hijos)
             # print(cola)
         return nodo_actual
+
+    def generateRoadDFS(self, start_node):
+        visited = set()
+        stack = [(start_node, [start_node])]
+
+        while stack:
+            self.addCost()
+            node, path = stack.pop()
+            visited.add(node)
+
+            if node == self.goal:  # Supongamos que self.target_node es el nodo objetivo que busca DFS
+                return path
+
+            for neighbor in node.childs:
+                if neighbor not in visited and not neighbor.visited:
+                    neighbor.visited = True
+                    stack.append((neighbor, path + [neighbor]))
+
+        return []  # Si no se encuentra el objetivo, retorna una lista vacía
+
+
+    def addCost(self):
+        self.cost+=1

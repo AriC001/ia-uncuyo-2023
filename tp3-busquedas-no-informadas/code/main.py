@@ -15,8 +15,15 @@ for i in range(30):
     costsBFS.append(agent.cost)
 print(min(costsBFS))
 
-
-
+##   DFS
+costsDFS = []
+for i in range(30):
+    agent = Agent(env)
+    road = agent.generateRoadDFS(agent.start)
+    # print(road)
+    env.visit()
+    costsDFS.append(agent.cost)
+print(min(costsDFS))
 
 
 
