@@ -10,6 +10,7 @@ class Node:
         # self.grilla = env.grilla
         # self.start = (env.start[0],env.start[1])
         self.childs = []
+        # self.childsDown = []
         #     "arriba": None,
         #     "abajo": None,
         #     "izquierda": None,
@@ -38,22 +39,33 @@ def grillaNodeObst(env,fila,columna):
     # for fila in range(env.sizeX):
     #     for columna in range(env.sizeY):
     if env.grilla[fila][columna].value != 1:
-        if fila > 0:
-            if env.grilla[fila - 1][columna].value != 1:
-                # self.childs.append( env.grilla[fila - 1][columna])
-                env.grilla[fila][columna].childs.append(env.grilla[fila - 1][columna])
+        # if fila > 0:
+        #     if env.grilla[fila - 1][columna].value != 1:
+        #         # self.childs.append( env.grilla[fila - 1][columna])
+        #         env.grilla[fila][columna].childs.append(env.grilla[fila - 1][columna])
+        #         env.grilla[fila][columna].childsDown.append(env.grilla[fila - 1][columna])
         if fila < env.sizeX - 1:
             if env.grilla[fila + 1][columna].value != 1:
                 # self.childs.append(env.grilla[fila + 1][columna])
                 env.grilla[fila][columna].childs.append(env.grilla[fila + 1][columna])
-        if columna > 0:
-            if env.grilla[fila][columna - 1].value != 1:
-                # self.childs.append( env.grilla[fila][columna - 1])
-                env.grilla[fila][columna].childs.append(env.grilla[fila][columna - 1])
-        if columna < env.sizeY - 1:
-            if env.grilla[fila][columna + 1].value != 1:
-                # self.childs.append(env.grilla[fila][columna + 1])
-                env.grilla[fila][columna].childs.append(env.grilla[fila][columna + 1])
+            if columna < env.sizeY - 1:
+                if env.grilla[fila + 1][columna + 1].value != 1:
+                    # self.childs.append(env.grilla[fila + 1][columna])
+                    env.grilla[fila][columna].childs.append(env.grilla[fila + 1][columna + 1])
+            if columna > 0:
+                if env.grilla[fila + 1][columna - 1].value != 1:
+                    # self.childs.append(env.grilla[fila + 1][columna])
+                    env.grilla[fila][columna].childs.append(env.grilla[fila + 1][columna - 1])
+
+            # if env.grilla[fila + 1][columna].value != 1:
+        # if columna > 0:
+        #     if env.grilla[fila][columna - 1].value != 1:
+        #         # self.childs.append( env.grilla[fila][columna - 1])
+        #         env.grilla[fila][columna].childs.append(env.grilla[fila][columna - 1])
+        # if columna < env.sizeY - 1:
+        #     if env.grilla[fila][columna + 1].value != 1:
+        #         # self.childs.append(env.grilla[fila][columna + 1])
+        #         env.grilla[fila][columna].childs.append(env.grilla[fila][columna + 1])
 
 def nodificar(env):
     for i in range(100):

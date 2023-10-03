@@ -9,7 +9,7 @@ class Environment:
         self.finish = (0,0)
         self.initializeMatrix()
         self.generteObst()
-        
+
     def generteObst(self):
         for k in range(self.sizeX*self.sizeY):
             if random.random() <= 0.08:
