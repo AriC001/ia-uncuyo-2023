@@ -1,0 +1,3 @@
+Tama�o Tablero,Algoritmo,Porcentaje de Exito,Avg Execution Time,Std Execution Time,Avg States Explored,Std States Explored
+4,Hill Climbing,93.33333333333333%,0.022043673197428386,,,
+8,Hill Climbing,43.333333333333336%,1.6714833418528239,,,

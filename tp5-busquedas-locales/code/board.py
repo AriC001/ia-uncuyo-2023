@@ -24,49 +24,66 @@ class Board:
         queens_in_row = 0
         for filas in range(self.size):
             for col in range(self.size):
-                if col == 0:
-                    if queens_in_row > 1:
-                        collision_in_row += queens_in_row
-                    queens_in_row = 0
+                # if col == 0:
+                #     if queens_in_row > 1:
+                #         collision_in_row += queens_in_row
+                #     queens_in_row = 0
                 if self.board[filas][col] == 1:
-                    queens_in_row+=1
-        # print(collision_in_row) 
+                    columnas = col+1
+                    while columnas < self.size:
+                        if self.board[filas][columnas] == 1:
+                            queens_in_row+=1
+                        columnas+=1
+
+        collision_in_row = queens_in_row
         
 
         collision_in_col = 0
         queens_in_col = 0
         for col in range(self.size):
             for filas in range(self.size):
-                if filas == 0:
-                    if queens_in_col > 1:
-                        collision_in_col += queens_in_col
-                    queens_in_col = 0
+                # if filas == 0:
+                #     if queens_in_col > 1:
+                #         collision_in_col += queens_in_col
+                #     queens_in_col = 0
                 if self.board[filas][col] == 1:
-                    queens_in_col+=1
-        # print(collision_in_col) 
+                    filas2 = filas+1
+                    while filas2 < self.size:
+                        if self.board[filas2][col] == 1:
+                            queens_in_col+=1
+                        filas2+=1
+        collision_in_col = queens_in_col
 
         # Para colisiones en las diagonales
-        collision_in_diag = 0
-        queens_in_diagonals = []
-    
-        for k in range(1 - self.size, self.size):
-            # Recorre las diagonales desde la izquierda hacia la derecha
-            diagonal = [self.board[i][i + k] for i in range(max(0, -k), min(self.size, self.size - k))]
-            queens_in_diagonals.append(diagonal.count(1))
-            
-            # Recorre las diagonales desde la derecha hacia la izquierda
-            diagonal = [self.board[i][self.size - 1 - i - k] for i in range(max(0, -k), min(self.size, self.size - k))]
-            queens_in_diagonals.append(diagonal.count(1))
-        
-        # print(queens_in_diagonals)
-        for queens in queens_in_diagonals:
-            if queens > 1:
-                collision_in_diag += queens
+        queens_in_diagonal = 0
+        for row in range(self.size):
+            for col in range(self.size):
+                if self.board[row][col] == 1:
+                    # Verifica las reinas en la misma diagonal hacia arriba y hacia la izquierda
+                    r, c = row - 1, col - 1
+                    while r >= 0 and c >= 0:
+                        if self.board[r][c] == 1:
+                            queens_in_diagonal += 1
+                        r -= 1
+                        c -= 1
+                    
+                    # Verifica las reinas en la misma diagonal hacia arriba y hacia la derecha
+                    r, c = row - 1, col + 1
+                    while r >= 0 and c < self.size:
+                        if self.board[r][c] == 1:
+                            queens_in_diagonal += 1
+                        r -= 1
+                        c += 1
+        collision_in_diag = queens_in_diagonal
+        # return queens_in_diagonal
 
+        # # print(queens_in_diagonals)
+        # for queens in queens_in_diagonals:
+        #     if queens > 1:
+        #         collision_in_diag += queens
 
         collision = collision_in_diag + collision_in_row + collision_in_col
-        collision = 8 if collision>8 else collision
-        self.value = 1-(self.size/collision)
+        self.value = collision
 
         return
         
@@ -104,8 +121,9 @@ class Board:
     def crossJoin(self,board):
         return
     
-    def hillClimbing(self,board):
-        #HillC.algo(self)
+    def hillClimbing(self):
+        HillC.neighbor(self)
+        # self.printear()
         return
     
     def changeValue(self):
