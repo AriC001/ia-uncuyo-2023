@@ -4,8 +4,9 @@ import random
 import board as Board
 
 def simulatedAnnealing(board):
+    cont = 0
     temperature = 1000
-    coolingRate = 0.95
+    coolingRate = 0.97
     evaluations = 0
     maxEvaluations = 10000
     values = []
@@ -15,17 +16,23 @@ def simulatedAnnealing(board):
         newBoard = copy.deepcopy(board)
         i = random.randint(0,board.size-1)
         j = random.randint(0,board.size-1)
-        while newBoard.board[i][j] != 1 and newBoard.board[j][i] != 1:
+        while newBoard.board[i][j] != 1:
             i = random.randint(0,board.size-1)
             j = random.randint(0,board.size-1)
+        i2 = random.randint(0,board.size-1)
+        j2 = random.randint(0,board.size-1)
+        while newBoard.board[i2][j2] != 0:
+            i2 = random.randint(0,board.size-1)
+            j2 = random.randint(0,board.size-1)
         temp = newBoard.board[i][j]
-        newBoard.board[i][j] = newBoard.board[j][i]
-        newBoard.board[j][i] = temp
+        newBoard.board[i][j] = newBoard.board[i2][j2]
+        newBoard.board[i2][j2] = temp
         # i,j = random.sample(range(board.size),2)
         # newBoard.board[i],newBoard.board[j]=newBoard.board[j],newBoard.board[i]
         Board.Board.h(newBoard)
         values.append(newBoard.value)
-        if acceptance_probability(board.value,newBoard.value,temperature,coolingRate) == True:
+        bool,temperature,cont = acceptance_probability(board.value,newBoard.value,temperature,coolingRate,cont)
+        if bool:
             # board.board = newBoard.board
             # board.value = newBoard.value
             board = copy.deepcopy(newBoard)
@@ -34,7 +41,7 @@ def simulatedAnnealing(board):
         if min(values) == 0:
             keepGoing = False
     
-    return board,evaluations
+    return board,cont
 
 
 
@@ -126,13 +133,16 @@ def simulatedAnnealing2(board):
 
 
 
-def acceptance_probability(actual_value, proposed_value, temperature,coolingRate):
+def acceptance_probability(actual_value, proposed_value, temperature,coolingRate,cont):
     if proposed_value < actual_value:
         temperature *= coolingRate
-        return True  # Si el valor propuesto es mejor, se acepta de inmediato
+        return True,temperature,cont  # Si el valor propuesto es mejor, se acepta de inmediato
     else:
-        temperature *= coolingRate
         if(random.uniform(0,1) <= math.exp((actual_value - proposed_value) / temperature)):
-            return True
+            cont+=1
+            # print("aloja: ",math.exp((actual_value - proposed_value) / temperature),end="  ")
+            temperature *= coolingRate
+            return True,temperature,cont
         else:
-            return False
+            temperature *= coolingRate
+            return False,temperature,cont

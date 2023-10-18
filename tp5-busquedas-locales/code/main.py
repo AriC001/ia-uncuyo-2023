@@ -6,46 +6,25 @@ import math
 
 # tableros = []
 # tableros2 = []
-# queens = 12
+# queens = 8
 # for i in range(queens):
+#     # board = Board.Board(queens)
 #     board = Board.Board(queens)
-#     board2 = Board.Board(queens)
-#     tableros.append(board)
-#     tableros2.append(board2)
-# cont = 0
-# # while tableros[0].value > 0 and cont < 1:
-# start1 = time.time()
-# for i in range(0,12):
-#     tableros[i].simulatedAnnealing2()
-# print(time.time()-start1)
-# tableros = sorted(tableros, key=lambda board: board.value, reverse=False)
+#     # tableros.append(board)
+#     tableros2.append(board)
 
 # start1 = time.time()
-# for i in range(0,12):
+# for i in range(0,8):
 #     tableros2[i].simulatedAnnealing()
 # print(time.time()-start1)
 # tableros2 = sorted(tableros2, key=lambda board: board.value, reverse=False)
 
-# for i in range(0,4):
-#     tableros[i].printear()
-#     print(tableros[i].value)
-#     print()
 # print("----------")
 # for i in range(0,4):
 #     tableros2[i].printear()
 #     print(tableros2[i].value)
 #     print()
 
-
-
-# temperature = 1000
-# cool = 0.92
-# cont=0
-# for i in range(200):
-#     if (math.exp((2 - 3) / temperature)) >0.09:
-#         cont+=1
-#     temperature*=cool
-# print(cont)
 # exit()
 
 results = []

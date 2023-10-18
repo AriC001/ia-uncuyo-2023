@@ -135,7 +135,8 @@ class Board:
         return
     
     def simulatedAnnealing(self):
-        self,evaluations = SmAn.simulatedAnnealing(self)
+        self,cont = SmAn.simulatedAnnealing(self)
+        # print(cont)
         return
     
     def simulatedAnnealing2(self):
