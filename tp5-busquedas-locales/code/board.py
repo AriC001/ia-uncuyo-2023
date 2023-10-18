@@ -1,5 +1,6 @@
 import random
 import hillClimbing as HillC
+import simulatedAnnealing as SmAn
 class Board:
     def __init__(self, queens):
         self.size = queens
@@ -12,8 +13,15 @@ class Board:
 
     def makeBoard(self):
         self.board = [[0 for filas in range(self.size)] for col in range(self.size)]
-        for i in range(self.size):
-            self.board[0][i] = 1
+        # for i in range(self.size):
+        #     self.board[0][i] = 1
+
+        cont = 0
+        while cont != self.size:
+            i,j = random.sample(range(self.size),2)
+            if self.board[i][j] == 0:
+                self.board[i][j] = 1
+                cont+=1
         return
 
     def h(self):
@@ -124,6 +132,16 @@ class Board:
     def hillClimbing(self):
         HillC.neighbor(self)
         # self.printear()
+        return
+    
+    def simulatedAnnealing(self):
+        self,evaluations = SmAn.simulatedAnnealing(self)
+        return
+    
+    def simulatedAnnealing2(self):
+        self,evaluations = SmAn.simulatedAnnealing2(self)
+        # if evaluations < 10000:
+            # print(evaluations)
         return
     
     def changeValue(self):
