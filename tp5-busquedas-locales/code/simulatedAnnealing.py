@@ -4,44 +4,33 @@ import random
 import board as Board
 
 def simulatedAnnealing(board):
-    cont = 0
     temperature = 1000
     coolingRate = 0.97
     evaluations = 0
-    maxEvaluations = 10000
+    maxEvaluations = 1000
     values = []
     keepGoing = True
 
-    while evaluations < maxEvaluations and keepGoing:
+    while evaluations < maxEvaluations and keepGoing == True:
+        newBoard = Board.Board(board.size)
         newBoard = copy.deepcopy(board)
         i = random.randint(0,board.size-1)
         j = random.randint(0,board.size-1)
-        while newBoard.board[i][j] != 1:
-            i = random.randint(0,board.size-1)
-            j = random.randint(0,board.size-1)
-        i2 = random.randint(0,board.size-1)
-        j2 = random.randint(0,board.size-1)
-        while newBoard.board[i2][j2] != 0:
-            i2 = random.randint(0,board.size-1)
-            j2 = random.randint(0,board.size-1)
-        temp = newBoard.board[i][j]
-        newBoard.board[i][j] = newBoard.board[i2][j2]
-        newBoard.board[i2][j2] = temp
-        # i,j = random.sample(range(board.size),2)
-        # newBoard.board[i],newBoard.board[j]=newBoard.board[j],newBoard.board[i]
+        temp = newBoard.board[i]
+        newBoard.board[i] = newBoard.board[j]
+        newBoard.board[j] = temp
         Board.Board.h(newBoard)
         values.append(newBoard.value)
-        bool,temperature,cont = acceptance_probability(board.value,newBoard.value,temperature,coolingRate,cont)
-        if bool:
-            # board.board = newBoard.board
-            # board.value = newBoard.value
-            board = copy.deepcopy(newBoard)
-        evaluations +=1
+        bool,temperature = acceptance_probability(board.value,newBoard.value,temperature,coolingRate)
+        if bool==True:
+            board.board = newBoard.board
+            board.value = newBoard.value
 
-        if min(values) == 0:
+        evaluations +=1
+        if board.value == 0:
             keepGoing = False
-    
-    return board,cont
+
+    return evaluations,values
 
 
 
@@ -120,7 +109,7 @@ def simulatedAnnealing2(board):
                             else:
                                 newBoard.board[movement][col]=0
                                 keepGoing = False
-                                # continue
+                                #inue
                                 # return board
                             if(board.value == 0):
                                 keepGoing=False
@@ -133,16 +122,15 @@ def simulatedAnnealing2(board):
 
 
 
-def acceptance_probability(actual_value, proposed_value, temperature,coolingRate,cont):
+def acceptance_probability(actual_value, proposed_value, temperature,coolingRate):
     if proposed_value < actual_value:
         temperature *= coolingRate
-        return True,temperature,cont  # Si el valor propuesto es mejor, se acepta de inmediato
+        return True,temperature  # Si el valor propuesto es mejor, se acepta de inmediato
     else:
         if(random.uniform(0,1) <= math.exp((actual_value - proposed_value) / temperature)):
-            cont+=1
             # print("aloja: ",math.exp((actual_value - proposed_value) / temperature),end="  ")
             temperature *= coolingRate
-            return True,temperature,cont
+            return True,temperature
         else:
             temperature *= coolingRate
-            return False,temperature,cont
+            return False,temperature

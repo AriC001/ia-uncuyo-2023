@@ -1,10 +1,17 @@
 import random
 import hillClimbing as HillC
 import simulatedAnnealing as SmAn
+import genetic as Gen
+import utils
 class Board:
     def __init__(self, queens):
         self.size = queens
+        self.queens = queens
         self.value = 1
+        self.values = []
+        self.statesHill = 0
+        self.statesAnn = 0
+        self.statesGen = 0
         self.board = []
         self.makeBoard()
         self.h()
@@ -13,15 +20,18 @@ class Board:
 
     def makeBoard(self):
         self.board = [[0 for filas in range(self.size)] for col in range(self.size)]
-        # for i in range(self.size):
-        #     self.board[0][i] = 1
+        states = list(range(self.queens))
+        for i in range(self.size):
+            elemento_aleatorio = random.choice(states)
+            self.board[elemento_aleatorio][i] = 1
+            states.remove(elemento_aleatorio)
 
-        cont = 0
-        while cont != self.size:
-            i,j = random.sample(range(self.size),2)
-            if self.board[i][j] == 0:
-                self.board[i][j] = 1
-                cont+=1
+        # cont = 0
+        # while cont != self.size:
+        #     i,j = random.sample(range(self.size),2)
+        #     if self.board[i][j] == 0:
+        #         self.board[i][j] = 1
+        #         cont+=1
         return
 
     def h(self):
@@ -129,22 +139,55 @@ class Board:
     def crossJoin(self,board):
         return
     
-    def hillClimbing(self):
-        HillC.neighbor(self)
-        # self.printear()
+    def hillClimbing(self,plot):
+        self.statesHill,self.values = HillC.neighbor3(self)
+        if self.queens == 12 and plot == True:
+            print(self.statesHill)
+            print(self.values.__len__())
+            # print(self.statesHill)
+            # print(self.values)
+            # self.values.reverse()
+            utils.plotFitness(self.values,"Hill Climbing")
         return
     
-    def simulatedAnnealing(self):
-        self,cont = SmAn.simulatedAnnealing(self)
-        # print(cont)
+    def simulatedAnnealing(self,plot):
+        self.statesAnn,self.values = SmAn.simulatedAnnealing(self)
+        if self.queens == 12 and plot:
+            # print(self.statesAnn)
+            # print(self.values)
+            # self.values.reverse()
+            utils.plotFitness(self.values,"Simulated Annealing")
         return
     
-    def simulatedAnnealing2(self):
-        self,evaluations = SmAn.simulatedAnnealing2(self)
-        # if evaluations < 10000:
-            # print(evaluations)
+    
+    def genetic(self,plot):
+        self.statesGen = Gen.genetic(self,plot)
+        print(self.statesGen)
+        # if self.queens == 12:
+        #     self.values.reverse()
+        #     utils.plotFitness(self.values,"Genetic")
         return
     
+    # def simulatedAnnealing2(self):
+    #     self,evaluations = SmAn.simulatedAnnealing2(self)
+    #     # if evaluations < 10000:
+    #         # print(evaluations)
+    #     return
+    
+    def queensCount(self):
+        count = 0
+        for i in range(self.queens):
+            for j in range(self.queens):
+                if self.board[i][j] == 1:
+                    count+=1
+        return count
+    
+    def isValidSolution(self):
+        if self.queensCount() == self.queens:
+            return True
+        else:
+            return False
+
     def changeValue(self):
         self.value = 1
         

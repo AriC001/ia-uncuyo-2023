@@ -1,145 +1,129 @@
+import multiprocessing
 import board as Board
 import time
 import csv
 from random import sample
 import math
+import utils
 
-# tableros = []
-# tableros2 = []
-# queens = 8
-# for i in range(queens):
-#     # board = Board.Board(queens)
-#     board = Board.Board(queens)
-#     # tableros.append(board)
-#     tableros2.append(board)
 
-# start1 = time.time()
-# for i in range(0,8):
-#     tableros2[i].simulatedAnnealing()
-# print(time.time()-start1)
-# tableros2 = sorted(tableros2, key=lambda board: board.value, reverse=False)
+def runner(queens,results):
+    #
+    solutionFondHillClimb = 0
+    statesHillClimb = []
+    statesHillClimbProm = 0
+    duration_hillClimbing = []
+    AVG_duration_hillClimbing = 0
+    std_duration_hillClimbing = 0
+    #
+    solutionFondSimulatedAn = 0
+    statesSimulatedAn = []
+    statesSimulatedAnProm = 0
+    duration_SimulatedAn = []
+    AVG_duration_SimulatedAn = 0
+    std_duration_SimulatedAn = 0
+    #
+    solutionFondGenetic = 0
+    statesGenetic = []
+    statesGeneticProm = 0
+    duration_genetic = []
+    AVG_duration_genetic = 0
+    std_duration_genetic = 0
+    for j in range(30): # Creacion de tableros con n queens
 
-# print("----------")
-# for i in range(0,4):
-#     tableros2[i].printear()
-#     print(tableros2[i].value)
-#     print()
+        ## Hill
+        tableros = []
+        for i in range(queens):
+            board = Board.Board(queens)
+            tableros.append(board)
 
-# exit()
-
-results = []
-solutionFondHillClimb = 0
-AVG_duration_hillClimbing = 0
-solutionFondSimulatedAn = 0
-AVG_duration_SimulatedAn = 0
-for i in range(30): # Creacion de 4 tableros con 4 reinas
-    tableros = []
-    queens = 4
-    for i in range(queens):
-        board = Board.Board(queens)
-        tableros.append(board)
-
-    tableros = sorted(tableros, key=lambda board: board.value, reverse=False)
-    start_time_hillClimbing = time.time()
-
-    cont = 0
-    while tableros[0].value > 0 and cont < 100:
-        for i in range(0,tableros.__len__()):
-            tableros[i].hillClimbing()
         tableros = sorted(tableros, key=lambda board: board.value, reverse=False)
-        cont+=1
-    duration_hillClimbing = time.time() - start_time_hillClimbing
-    AVG_duration_hillClimbing += duration_hillClimbing
-    tableros = sorted(tableros, key=lambda board: board.value, reverse=False)
-    # print("Hill: ",end="")
-    for i in range(0,tableros.__len__()):
-        if tableros[i].value == 0:
+        start_time_hillClimbing = time.time()
+
+        for i in range(1):
+            if j == 29:
+                tableros[i].hillClimbing(True)
+            else:
+                tableros[i].hillClimbing(False)
+            statesHillClimb.insert(0,tableros[i].statesHill)
+        tableros = sorted(tableros, key=lambda board: board.value, reverse=False)
+        duration_hillClimbing.insert(0,time.time() - start_time_hillClimbing)
+        AVG_duration_hillClimbing += duration_hillClimbing[0]
+        tableros = sorted(tableros, key=lambda board: board.value, reverse=False)
+        statesHillClimbProm += statesHillClimb[0]
+        
+        if tableros[0].value == 0:
             solutionFondHillClimb+=1
-        # print(solutionFondHillClimb,end=", ")
-    # print()
-    tableros = []
-    queens = 4
-    for i in range(queens):
-        board = Board.Board(queens)
-        tableros.append(board)
-    start_time_SimulatedAn = time.time()
-    for i in range(0,tableros.__len__()):
-        tableros[i].simulatedAnnealing()
-    tableros = sorted(tableros, key=lambda board: board.value, reverse=False)
-    duration_SimulatedAn = time.time() - start_time_SimulatedAn
-
-    # print("Anne: ",end="")
-    # AVG_duration_SimulatedAn += duration_SimulatedAn
-    for i in range(0,tableros.__len__()):
-        if tableros[i].value == 0:
-            solutionFondSimulatedAn+=1
-        # print(solutionFondSimulatedAn,end=", ")
-    # print()
-    # else:
-    #     tableros[0].printear()
-    #     print(tableros[0].value)
-    #     print()
-# print()
-# porcentaje_str = str((solutionFondHillClimb/30)*100)
-results.append({"Tamaño Tablero": 4, "Algoritmo": "Hill Climbing", "Porcentaje de Exito": str((solutionFondHillClimb/30)*100)+"%", "Avg Execution Time": AVG_duration_hillClimbing/30 , "Std Execution Time":"", "Avg States Explored":"", "Std States Explored":"" })
-results.append({"Tamaño Tablero": 4, "Algoritmo": "Simulated Annealing", "Porcentaje de Exito": str((solutionFondSimulatedAn/30)*100)+"%", "Avg Execution Time": AVG_duration_SimulatedAn/30 , "Std Execution Time":"", "Avg States Explored":"", "Std States Explored":"" })
 
 
-solutionFondHillClimb = 0
-AVG_duration_hillClimbing = 0
-for i in range(30): # Creacion de 8 tableros con 8 reinas
-    tableros = []
-    queens = 8
-    for i in range(queens):
-        board = Board.Board(queens)
-        tableros.append(board)
+        ## SimAnn
+        tableros = []
+        for i in range(queens):
+            board = Board.Board(queens)
+            tableros.append(board)
 
-    tableros = sorted(tableros, key=lambda board: board.value, reverse=False)
-    start_time_hillClimbing = time.time()
-
-    cont = 0
-    while tableros[0].value > 0 and cont < 100:
-        for i in range(0,tableros.__len__()):
-            tableros[i].hillClimbing()
+        start_time_SimulatedAn = time.time()
+        for i in range(1):
+            if j == 29:
+                tableros[i].simulatedAnnealing(True)
+            else:
+                tableros[i].simulatedAnnealing(False)
+            statesSimulatedAn.insert(0, tableros[i].statesAnn)
         tableros = sorted(tableros, key=lambda board: board.value, reverse=False)
-        cont+=1
-    duration_hillClimbing = time.time() - start_time_hillClimbing
-    AVG_duration_hillClimbing += duration_hillClimbing
-    tableros = sorted(tableros, key=lambda board: board.value, reverse=False)
-
-    # print("Hill: ",end="")
-    if tableros[0].value == 0:
-        solutionFondHillClimb+=1
-        # print(solutionFondHillClimb,end=", ")
-    # else:
-    #     tableros[0].printear()
-    #     print(tableros[0].value)
-    #     print()
-
-# print()
-porcentaje_str = str((solutionFondHillClimb/30)*100)
-results.append({"Tamaño Tablero": 8, "Algoritmo": "Hill Climbing", "Porcentaje de Exito": porcentaje_str+"%", "Avg Execution Time": AVG_duration_hillClimbing/30 , "Std Execution Time":"", "Avg States Explored":"", "Std States Explored":"" })
-
-# tableros = sorted(tableros, key=lambda board: board.value, reverse=False)
-# tableros[0].printear()
+        duration_SimulatedAn.insert(0,time.time() - start_time_SimulatedAn)
+        statesSimulatedAnProm += statesSimulatedAn[0]
+        AVG_duration_SimulatedAn += duration_SimulatedAn[0]
+        
+        if tableros[0].value == 0:
+            solutionFondSimulatedAn+=1
 
 
-# for i in range(0,tableros.__sizeof__(),2):
-#     tableros[i].crossJoin(tableros[i+1])
+        ## GEN
+        tableros = []
+        for i in range(1):
+            board = Board.Board(queens)
+            tableros.append(board)
+        
+        start_time_gen = time.time()
+        for i in range(1):
+            if j == 1 and queens == 12:
+                tableros[i].genetic(True)
+            else:
+                tableros[i].genetic(False)
+            statesGenetic.insert(0, tableros[i].statesGen)
+        tableros = sorted(tableros, key=lambda board: board.value, reverse=False)
+        duration_genetic.insert(0,time.time() - start_time_gen)
+
+        statesGeneticProm += statesGenetic[0]
+        AVG_duration_genetic += duration_genetic[0]
+        
+        if tableros[0].value == 0:
+            solutionFondGenetic+=1
+        
+    std_duration_hillClimbing = utils.standDev(duration_hillClimbing,AVG_duration_hillClimbing)
+    std_duration_SimulatedAn = utils.standDev(duration_SimulatedAn,AVG_duration_SimulatedAn)
+    std_duration_genetic = utils.standDev(duration_genetic,AVG_duration_genetic)
+    stdStatesHill = utils.standDev(statesHillClimb,statesHillClimbProm/30)
+    stdStatesSmAnn = utils.standDev(statesSimulatedAn,statesSimulatedAnProm/30)
+    stdStatesGen = utils.standDev(statesGenetic,statesGeneticProm/30)
+    if queens == 12:
+        utils.plotTimes(duration_hillClimbing,duration_SimulatedAn,duration_genetic)
+    results.append({"Tamaño Tablero": queens, "Algoritmo": "Hill Climbing", "Porcentaje de Exito": str((solutionFondHillClimb/30)*100)+"%", "Avg Execution Time": AVG_duration_hillClimbing/30 , "Std Execution Time":std_duration_hillClimbing, "Avg States Explored":statesHillClimbProm/30, "Std States Explored":stdStatesHill})
+    results.append({"Tamaño Tablero": queens, "Algoritmo": "Simulated Annealing", "Porcentaje de Exito": str((solutionFondSimulatedAn/30)*100)+"%", "Avg Execution Time": AVG_duration_SimulatedAn/30 , "Std Execution Time":std_duration_SimulatedAn, "Avg States Explored":statesSimulatedAnProm/30, "Std Stes Explored":stdStatesSmAnn})
+    results.append({"Tamaño Tablero": queens, "Algoritmo": "Genetic", "Porcentaje de Exito": str((solutionFondGenetic/30)*100)+"%", "Avg Execution Time": AVG_duration_genetic/30 , "Std Execution Time":std_duration_genetic, "Avg States Explored":statesGeneticProm/30, "Std States Explored": stdStatesGen})
+    # print(results)
+    print("Finished ",queens)
+   
 
 
-# for i in range(queens):
-#     tableros[i].printear()
-#     print(tableros[i].value)
-#     print()
+if __name__ == '__main__':
+    start_time_General = time.time()
+    results = []
+    queens = [4,8,10,12,15]
 
-
-def save_to_csv(results: list):
-    with open("./tp5-busquedas-locales/busquedas-locales.csv", mode="a", newline="") as file:
-        fieldnames = ["Tamaño Tablero", "Algoritmo", "Porcentaje de Exito", "Avg Execution Time", "Std Execution Time", "Avg States Explored", "Std States Explored" ]
-        writer = csv.DictWriter(file, fieldnames=fieldnames)
-
-        writer.writeheader()
-        writer.writerows(results)
-
-save_to_csv(results)
+    with multiprocessing.Pool(5) as pool:
+        # Utiliza starmap para ejecutar la función con los argumentos
+        pool.starmap(runner, [(queen, results) for queen in queens])
+    
+    print(time.time() - start_time_General)
+    utils.save_to_csv(results)
