@@ -14,12 +14,20 @@ Evaluar cual técnica “aprende” mas rápido (en menos repeticiones) y compar
 ###### Justificación: -
 
 Actividad 1. Recopilación de bibliografía y/o ejemplos del problema a resolver. [6 dias]
+
 Actividad 2. Puesta a punto de los entornos virtuales de DOOM con manejo random de IA. [2 dias]
+
 Actividad 3. Puesta a punto del código fuente para IA de RL. [4 dias]
+
 Actividad 4. Implementar la API de Gymnasium para poder implementar herramientas de detección de objetos. [2 dias]
+
 Actividad 5. Implementar el código para detección objetos. [5 dias]
 Actividad 6. Implementación de Reinforcement Learning sin El. [8 dias]
+
 Actividad 7. Implementación de Reinforcement Learning con El. [6 dias]
+
 Actividad 8. Ejecución de los experimentos a fin de validar el objetivo y obtener resultados. [3 dias]
+
 Actividad 9. Análisis de los resultados. [4 dias]
+
 Actividad 10. Escritura de informe final. [5 dias]
