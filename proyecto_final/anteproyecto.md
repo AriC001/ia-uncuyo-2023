@@ -48,3 +48,16 @@ Act 7. Implementación de Reinforcement Learning con Eligibility Traces. [5 día
 Act 8. Ejecución de los experimentos a fin de validar el objetivo y obtener resultados. [4 días]
 Act 9. Análisis de los resultados. [4 días]
 Act 10. Escritura de informe final. [5 días]
+
+
+### Referencias:
+
+- [Eligibility Traces in Reinforcement Learning](https://towardsdatascience.com/eligibility-traces-in-reinforcement-learning-a6b458c019d6)
+- [Video: Reinforcement Learning with Eligibility Traces](https://www.youtube.com/watch?v=oinIaLIM5bw)
+- [Video: Reinforcement Learning with Eligibility Traces (2)](https://www.youtube.com/watch?v=xc0IwNI3NHU)
+- [Reinforcement Learning with Eligibility Traces: A Survey](https://link.springer.com/article/10.1023/A:1018012322525)
+- [TD in Reinforcement Learning: The Easy Way](https://towardsdatascience.com/td-in-reinforcement-learning-the-easy-way-f92ecfa9f3ce)
+- [Monte Carlo in Reinforcement Learning: The Easy Way](https://zsalloum.medium.com/monte-carlo-in-reinforcement-learning-the-easy-way-564c53010511)
+- [ViZDoom GitHub Repository](https://github.com/Farama-Foundation/ViZDoom)
+- [Stable Baselines Documentation](https://stable-baselines.readthedocs.io/en/master/)
+- [Gymnasium GitHub Repository](https://github.com/Farama-Foundation/Gymnasium)
