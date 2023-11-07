@@ -17,7 +17,7 @@ El proyecto tiene como objetivo diseñar un agente de inteligencia artificial (I
 
 - Eficiencia computacional: Los algoritmos de Deep RL, aunque poderosos, a menudo requieren una gran capacidad de procesamiento y recursos de hardware, como GPUs o TPUs, para un entrenamiento eficiente. En comparación, el uso de RL con Eligibility Traces suele ser más eficiente en términos de recursos computacionales, lo que lo hace más adecuado para máquinas de hogar con recursos limitados.
 
-- Implementación más sencilla: Los algoritmos de RL con Eligibility Traces tienden a ser más simples de implementar en comparación con los complejos modelos de redes neuronales utilizados en Deep RL. Esto hace que la implementación sea más accesible y práctica para entusiastas o desarrolladores en un entorno doméstico.
+- Implementación más sencilla: Los algoritmos de RL con Eligibility Traces tienden a ser más simples de implementar en comparación con los complejos modelos de redes neuronales utilizados en Deep RL. Esto hace que la implementación sea más accesible y práctica.
 
 ### Alcance:
 El proyecto se enfoca en el desarrollo de un agente de IA para jugar el videojuego DOOM utilizando las técnicas mencionadas. El alcance incluye la implementación de los algoritmos de Reinforcement Learning con y sin Eligibility Traces, así como la integración de la API de Gymnasium para la detección de objetos. Se llevarán a cabo experimentos para validar el rendimiento del agente y se analizarán los resultados.
