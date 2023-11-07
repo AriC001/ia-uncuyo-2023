@@ -2,7 +2,7 @@ import board as Board
 import random
 import copy
 
-def makeBoardOne(queens):
+def backtrackingInit(queens,statesRecorded):
     initial_states = list(range(1, queens + 1))
     boards = []
 
@@ -11,12 +11,13 @@ def makeBoardOne(queens):
         board.board.append(state)
         available_states = initial_states.copy()
         available_states.remove(state)
+        statesRecorded+=1
 
-        backtracking(queens, board, available_states, boards)
+        backtracking(queens, board, available_states, boards,statesRecorded)
     boards.sort(key=lambda board: board.value)
-    return boards
+    return boards,statesRecorded
 
-def backtracking(queens, board, available_states, boards):
+def backtracking(queens, board, available_states, boards,statesRecorded):
     if len(board.board) == queens:
         Board.Board.h(board)
         if board.value < 1:
@@ -24,13 +25,14 @@ def backtracking(queens, board, available_states, boards):
         return
 
     for state in available_states:
+        statesRecorded+=1
         new_board = copy.deepcopy(board)
         new_board.board.append(state)
         new_available_states = available_states.copy()
         new_available_states.remove(state)
         Board.Board.h(new_board)
         if new_board.value == 0:  # Comprobar inmediatamente
-            backtracking(queens, new_board, new_available_states, boards)
+            backtracking(queens, new_board, new_available_states, boards,statesRecorded)
         # backtracking(queens, new_board, new_available_states, boards)
 
 # def backtracking(queens, position, boards, available_states):

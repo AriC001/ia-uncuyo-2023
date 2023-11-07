@@ -2,38 +2,44 @@ import board as Board
 import random
 import copy
 
-def makeBoardOne(queens):
+def forwardCheckingInit(queens,statesRecorded):
     initial_states = list(range(1, queens + 1))
     boards = []
-    boardStates = []
-    for _ in range(queens):
-        boardStates.append(list(initial_states))
 
     # print(boardStates)
     for state in initial_states:
+        statesRecorded+=1
         board = Board.Board(queens)
         board.board.append(state)
+
+        boardStates = []
+        for _ in range(queens):
+            boardStates.append(list(initial_states))
+
         # Realizar una copia profunda de boardStates para evitar compartir sublistas
         boardStatesCopy = [list(sublist) for sublist in boardStates]
         
-        # Cómo eliminar el estado que acabas de agregar de la lista de estados disponibles en todas las posiciones de boardStates
+        # Eliminar el estado que acabas de agregar de la lista de estados disponibles en todas las posiciones de boardStates
         removeInvalidStates(boardStatesCopy, state)
         # removeInvalidStates(boardStates, state)
-        print(boardStates)
+        # print(boardStates)
         # available_states = initial_states.copy()
         # available_states.remove(state)
 
-        forwardChecking(queens, board, boardStatesCopy, boards)
+        forwardChecking(queens, board, boardStatesCopy, boards,statesRecorded)
     # boards.sort(key=lambda board: board.value)
-    print(boards)
-    return boards
+    # print(boards)
+    if len(boards) == 0:
+        boards,statesRecorded = forwardCheckingInit(queens,statesRecorded)
+    return boards,statesRecorded
 
-def forwardChecking(queens, board, boardStates, boards):
+def forwardChecking(queens, board, boardStates, boards,statesRecorded):
     if len(board.board) == queens:
         Board.Board.h(board)
         if board.value < 1:
             boards.append(copy.deepcopy(board))
         return
+    
     position = len(board.board)
     # Realizar una copia profunda de boardStates
     boardStatesCopy = copy.deepcopy(boardStates)
@@ -46,15 +52,16 @@ def forwardChecking(queens, board, boardStates, boards):
     state = random.choice(boardStatesCopy[position])
     board.board.append(state)
     removeInvalidStates(boardStatesCopy, state)
-    forwardChecking(queens, board, boardStatesCopy, boards)
+    forwardChecking(queens, board, boardStatesCopy, boards,statesRecorded)
+    statesRecorded+=1
     return 
 
 def possibleLegalStates(queens, board, boardStates):
     i = len(board.board)-1
     inputState = board.board[len(board.board)-1]
 
-    print("AA ",inputState)
-    print(boardStates)
+    # print("AA ",inputState)
+    # print(boardStates)
     sumador = 1
     restador = -1
     for j in range(i+1,len(boardStates)):
@@ -65,11 +72,11 @@ def possibleLegalStates(queens, board, boardStates):
             boardStatesCopy.remove(inputState+restador)
         boardStates[j] = []
         boardStates[j] = boardStatesCopy
-        print("BB ",boardStates[j])
-        print("CC ",boardStates)
+        # print("BB ",boardStates[j])
+        # print("CC ",boardStates)
         if len(boardStates[j]) == 0:
-            print("DD ",boardStates)
-            print(board.board)
+            # print("DD ",boardStates)
+            # print(board.board)
             return 0
         sumador += 1
         restador -= 1

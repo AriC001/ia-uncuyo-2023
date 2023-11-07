@@ -2,74 +2,90 @@ import backtracking_csp as bc
 import forwardChecking_csp as fc
 import multiprocessing
 import board as Board
+import utils
 import time
 import csv
 
 
 def runner(queens,results):
-    # solutionFondBack = 0
-    # statesBack = []
-    # statesBackProm = 0
-    # duration_Back = []
-    # AVG_duration_Back = 0
-    # std_duration_Back = 0
+    solutionFondBack = 0
+    statesBackNum = 0
+    statesBack = []
+    statesBackProm = 0
+    duration_Back = []
+    AVG_duration_Back = 0
+    std_duration_Back = 0
 
-    # boards = []
-    # start_time_back = time.time()
-    # boards = bc.makeBoardOne(queens)
-    # duration_Back.insert(0,time.time() - start_time_back)
-    # AVG_duration_Back += duration_Back[0]
-
-    # if boards[0].value == 0:
-    #     solutionFondBack = True
-    # results.append([str(queens), "Backtracking", str(AVG_duration_Back), str("board.std_time")])
 
     solutionFoundFor = 0
+    statesForNum = 0
     statesFor = []
     statesForProm = 0
     duration_For = []
     AVG_duration_For = 0
     std_duration_For = 0
 
-    boards = []
-    start_time_for = time.time()
-    boards = fc.makeBoardOne(queens)
-    duration_For.insert(0,time.time() - start_time_for)
-    AVG_duration_For += duration_For[0]
-    with(open("boards.txt", "w")) as file:
-        for board in boards:
-            file.write(str(board.board) + "\n")
+    for i in range(30):
+        ## Backtracking
+        boards = []
+        start_time_back = time.time()
 
-    results.append({"Tamaño":str(queens),"Algortimo":"Forward Checking","Sol Found":str(len(boards)) ,"AVG Time":str(AVG_duration_For), "STD Time":str("board.std_time")}) 
-    return results
+        boards,statesBackNum = bc.backtrackingInit(queens,statesBackNum)
+        boards = list(set(boards))
 
-def resltsCSV(results):
-    with open('results.csv', 'a', newline='') as archivo:
-        writer = csv.writer(archivo)
-        # Check if file is empty and write headers
-        if archivo.tell() == 0:
-            writer.writerow(["Tamaño", "Algortimo","Sol Found" ,"AVG Time", "STD Time"])
-        # Write data
-        for result in results:
-            writer.writerow(result)
-        # for board in boards:
-            # writer.writerow([str(queens), str(board.algorithm), str(AVG_duration_Back), str("board.std_time")]) 
+        duration_Back.insert(0,time.time() - start_time_back)
+        statesBack.insert(0,statesBackNum) 
+        AVG_duration_Back += duration_Back[0]
+        statesBackProm += statesBackNum
+        solutionFondBack += len(boards)
+        
+        with(open("./tp6-csp/boards.txt", "a")) as file:
+            for board in boards:
+                file.write(str(board.board) + "\n")
+        ## Fin Backtracking
+
+        ## Forward Checking 
+        boards = []
+        start_time_for = time.time()
+
+        boards,statesForNum = fc.forwardCheckingInit(queens,statesForNum)
+        boards = list(set(boards))
+        
+        duration_For.insert(0,time.time() - start_time_for)
+        statesFor.insert(0,statesForNum)
+        AVG_duration_For += duration_For[0]
+        statesForProm += statesForNum
+        solutionFoundFor += len(boards)
+
+        with(open("./tp6-csp/boards.txt", "a")) as file:
+            for board in boards:
+                file.write(str(board.board) + "\n")
+        ## Fin Forward Checking 
+
+    print("Finished " + str(queens) + " Queens")
+    std_duration_Back = utils.standDev(duration_Back,AVG_duration_Back)
+    std_duration_For = utils.standDev(duration_For,AVG_duration_For)
+    stdStatesBack = utils.standDev(statesBack,statesBackProm/30)
+    stdStatesFor = utils.standDev(statesFor,statesForProm/30)
+    results.append({"Tamaño": queens,"Algortimo":"Backtracking","Sol Found": solutionFondBack ,"AVG Time":AVG_duration_Back/30, "STD Time": std_duration_Back,"AVG States":statesBackProm/30,"STD States": stdStatesBack})
+    results.append({"Tamaño": queens,"Algortimo":"Forward Checking","Sol Found": solutionFoundFor ,"AVG Time":AVG_duration_For/30, "STD Time": std_duration_For,"AVG States":statesForProm/30,"STD States": stdStatesFor})
+    utils.save_to_csv(results)
+    if queens == 12:
+        utils.plotTimes(duration_Back,duration_For,queens)
+    
+
 
 if __name__ == '__main__':
     start_time_General = time.time()
     results = []
     queens = [4,8,10,12]
-    runner(8,results)
-    # position = queens - 1
-    
-    # available_states = list(range(1, queens + 1))  # Inicializa con todos los estados posibles
+    # runner(12,results)
 
-    # with multiprocessing.Pool(5) as pool:
-    #     # Utiliza starmap para ejecutar la función con los argumentos
-    #     pool.starmap(runner, [(queen,results) for queen in queens])
+    with multiprocessing.Pool(4) as pool:
+        # Utiliza starmap para ejecutar la función con los argumentos
+        pool.starmap(runner, [(queen,results) for queen in queens])
     
-    resltsCSV(results)
-    
-
     print(time.time() - start_time_General)
+    
+    
 
