@@ -42,15 +42,15 @@ Act 1. Recopilación de bibliografía y/o ejemplos del problema a resolver. [5 d
 
 Act 2. Puesta a punto de los entornos virtuales de DOOM con control del jugador de manera random. [2 días]
 
-Act 3. Puesta a punto del código fuente para IA de RL. [4 días]
+Act 3. Puesta a punto del código fuente para IA de RL. [3 días]
 
 Act 4. Implementar la API de Gymnasium para poder aplicar herramientas de detección de objetos, con filtros en la imagen. [3 días]
 
 Act 5. Implementar el código para detección de objetos (enemigos, paredes). [5 días]
 
-Act 6. Implementación de Reinforcement Learning sin Eligibility Traces. [7 días]
+Act 6. Implementación de Reinforcement Learning sin Eligibility Traces. [5 días]
 
-Act 7. Implementación de Reinforcement Learning con Eligibility Traces. [5 días]
+Act 7. Implementación de Reinforcement Learning con Eligibility Traces. [4 días]
 
 Act 8. Implementacion de Q-Learning [3 días]
 
