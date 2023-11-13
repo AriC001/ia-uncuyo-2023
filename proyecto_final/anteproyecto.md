@@ -4,12 +4,12 @@
 
 ## Descripción: 
 
-El proyecto tiene como objetivo diseñar un agente de inteligencia artificial (IA) capaz de aprender a jugar el videojuego DOOM utilizando técnicas de aprendizaje por refuerzo (Reinforcement Learning) y Eligibility Traces. Se utilizará una biblioteca de GitHub que proporciona entornos virtuales de DOOM, junto con la API de Gymnasium para aplicar filtros al entorno y así poder realizar la detección de objetos, como enemigos y paredes. El proyecto busca evaluar qué tan rápido y eficientemente el agente puede aprender a jugar el juego y lograr sus objetivos.
+El proyecto tiene como objetivo diseñar un agente de inteligencia artificial (IA) capaz de aprender a jugar el videojuego DOOM utilizando técnicas de aprendizaje por refuerzo (Reinforcement Learning) y Eligibility Traces. Se utilizará una biblioteca de GitHub que proporciona entornos virtuales de DOOM, junto con la API de Gymnasium para aplicar filtros al entorno y así el agente podra aprender a identificar enemigos. El proyecto busca evaluar qué tan rápido y eficientemente el agente puede aprender a jugar el juego y lograr sus objetivos.
 
 ### Objetivos:
 
 - Diseñar un agente de IA capaz de aprender a jugar DOOM utilizando Reinforcement Learning con y sin Eligibility Traces.
-- Evaluar el rendimiento del agente en términos de tiempo de ejecución, la cantidad de veces que llega a un estado objetivo, la tasa de observaciones correctamente detectadas, entre otros.
+- Evaluar el rendimiento del agente en términos de cantidad de iteraciones para aprender jugar maximizando puntaje de manera eficiente, puntaje obtenido en los disitintos entornos.
 - Validar la eficacia de la combinación de Reinforcement Learning y Eligibility Traces para mejorar el rendimiento del agente en un entorno de juego complejo como DOOM.
 
 ### Justificación: 
@@ -31,34 +31,36 @@ Las actividades propuestas pueden estar sujetas a modificaciones y mejoras a med
 ### Forma de Evaluación (Métricas de Resultados):
 ##### Se evaluará el proyecto en función de las siguientes métricas:
 
-- Tiempo de ejecución: Se medirá el tiempo que el agente necesita para aprender a jugar DOOM de manera efectiva.
-- Cantidad de veces que llega a un estado objetivo: Se registrará la frecuencia con la que el agente alcanza los objetivos deseados en el juego.
+- Tiempo de ejecución: Se medirá la cantidad de ejecuciones que el agente necesita para aprender a jugar DOOM de manera efectiva, comparando cantidad de ejecuciones / puntaje obtenido.
 
-- Rendimiento en términos de puntajes o logros dentro del juego: Se medirá el éxito del agente en comparación con otros métodos o agentes.
+- Rendimiento en términos de puntajes o logros dentro del juego: Se medirá el éxito del agente en comparación con otros agentes. Dependiendo el entorno se tendra distintos objetivos.
+
+- Entornos:
+    - **Basic:** Escenario rectangular, con un enemigo inmovil en alguna parte. *Objetivo*: matar al enemigo, en la menor cantidad de movimientos.
+    - **Defend the Line:** Escenario rectangular, varios enemigos acercandose y disparando al agente. *Objetivo* matar la mayor cantidad de enemigos antes de morir.  
+    - **Defend the Center:** Escenario circular varios enemigos acercandose y disparnado al agente desde posiciones distintas. *Objetivo* matar la mayor cantidad de enemigos antes de morir.
 
 #### Actividades a Realizar:
 
-Act 1. Recopilación de bibliografía y/o ejemplos del problema a resolver. [5 días]
+Act 1. 📚 Recopilación de bibliografía/ejemplos del problema a resolver. [4 días]
 
-Act 2. Puesta a punto de los entornos virtuales de DOOM con control del jugador de manera random. [2 días]
+Act 2. 🛠️ Puesta a punto de entornos de DOOM con control del jugador de manera random. [2 días]
 
-Act 3. Puesta a punto del código fuente para IA de RL. [3 días]
+Act 3. ⌨️ Puesta a punto del código fuente para IA de RL. [3 días]
 
-Act 4. Implementar la API de Gymnasium para poder aplicar herramientas de detección de objetos, con filtros en la imagen. [3 días]
+Act 4. 🔄 Implementar API de Gymnasium para aplicar filtros al renderizado. [4 días]
 
-Act 5. Implementar el código para detección de objetos (enemigos, paredes). [5 días]
+Act 5. 🤖 Implementación de Reinforcement Learning sin Eligibility Traces. [4 días]
 
-Act 6. Implementación de Reinforcement Learning sin Eligibility Traces. [5 días]
+Act 6. 🧠 Implementación de Reinforcement Learning con Eligibility Traces. [3 días]
 
-Act 7. Implementación de Reinforcement Learning con Eligibility Traces. [4 días]
+Act 7. 📊 Implementacion de Q-Learning [3 días]
 
-Act 8. Implementacion de Q-Learning [3 días]
+Act 8. 🚀 Ejecución de los experimentos a fin de validar el objetivo y obtener resultados. [4 días]
 
-Act 9. Ejecución de los experimentos a fin de validar el objetivo y obtener resultados. [4 días]
+Act 9. 📈 Análisis de los resultados. [4 días]
 
-Act 10. Análisis de los resultados. [4 días]
-
-Act 11. Escritura de informe final. [5 días]
+Act 10. 📝 Escritura de informe final. [5 días]
 
 !["Calendar"](Gannt_Calendar.jpg)
 
@@ -73,3 +75,10 @@ Act 11. Escritura de informe final. [5 días]
 - [ViZDoom GitHub Repository](https://github.com/Farama-Foundation/ViZDoom)
 - [Stable Baselines Documentation](https://stable-baselines.readthedocs.io/en/master/)
 - [Gymnasium GitHub Repository](https://github.com/Farama-Foundation/Gymnasium)
+
+## Proyectos Similares
+- [Deep Reinforcement Learning agents that play different Doom scenarios](https://github.com/emasquil/doom-rl)
+- [A deep reinforcement learning agent playing DOOM ](https://www.researchgate.net/publication/318283732_Clyde_A_deep_reinforcement_learning_DOOM_playing_agent)
+- [Playing Doom with an AI](https://www.linkedin.com/pulse/playing-doom-ai-s%C3%A9rgio-saraiva/)
+- [Playing DOOM with Deep Reinforcement Learning](https://medium.com/@james.liangyy/playing-doom-with-deep-reinforcement-learning-e55ce84e2930)
+- [Deep Learning – Training an AI to Play Doom](https://www.codeproject.com/Articles/1232713/Deep-Learning-Training-an-AI-to-Play-Doom)
