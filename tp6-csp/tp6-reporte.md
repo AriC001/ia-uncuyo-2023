@@ -1,4 +1,6 @@
 
+
+
 ## Ejercicio 6: 
 #### Implementar una solución al problema de las n-reinas utilizando una formulación CSP. 
 A. Implementar una solución utilizando backtracking.
