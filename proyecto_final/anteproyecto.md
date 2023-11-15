@@ -4,12 +4,12 @@
 
 ## Descripción: 
 
-El proyecto tiene como objetivo diseñar un agente de inteligencia artificial (IA) capaz de aprender a jugar el videojuego DOOM utilizando técnicas de aprendizaje por refuerzo (Reinforcement Learning) y Eligibility Traces. Se utilizará una biblioteca de GitHub que proporciona entornos virtuales de DOOM, junto con la API de Gymnasium para aplicar filtros al entorno y así el agente podra aprender a identificar enemigos. El proyecto busca evaluar qué tan rápido y eficientemente el agente puede aprender a jugar el juego y lograr sus objetivos.
+El proyecto tiene como objetivo diseñar un agente de inteligencia artificial (IA) capaz de aprender a jugar el videojuego DOOM utilizando técnicas de aprendizaje por refuerzo (Reinforcement Learning) y Eligibility Traces. Se utilizará una biblioteca de GitHub que proporciona entornos virtuales de DOOM, junto con la API de Gymnasium para aplicar filtros al entorno y así el agente podrá aprender a identificar enemigos. El proyecto busca evaluar qué tan rápido y eficientemente el agente puede aprender a jugar el juego y lograr sus objetivos.
 
 ### Objetivos:
 
 - Diseñar un agente de IA capaz de aprender a jugar DOOM utilizando Reinforcement Learning con y sin Eligibility Traces.
-- Evaluar el rendimiento del agente en términos de cantidad de iteraciones para aprender jugar maximizando puntaje de manera eficiente, puntaje obtenido en los disitintos entornos.
+- Evaluar el rendimiento del agente en términos de cantidad de iteraciones para aprender jugar maximizando puntaje de manera eficiente, puntaje obtenido en los distintos entornos.
 - Validar la eficacia de la combinación de Reinforcement Learning y Eligibility Traces para mejorar el rendimiento del agente en un entorno de juego complejo como DOOM.
 
 ### Justificación: 
@@ -31,14 +31,15 @@ Las actividades propuestas pueden estar sujetas a modificaciones y mejoras a med
 ### Forma de Evaluación (Métricas de Resultados):
 ##### Se evaluará el proyecto en función de las siguientes métricas:
 
-- Tiempo de ejecución: Se medirá la cantidad de ejecuciones que el agente necesita para aprender a jugar DOOM de manera efectiva, comparando cantidad de ejecuciones / puntaje obtenido.
+- Cantidad de ejecuciones: Se medirá la cantidad de ejecuciones, veces que el agente necesita entrenarse en el entorno, para que el agente pueda jugar en ese entorno de manera efectiva, comparando cantidad de ejecuciones / puntaje obtenido.
 
-- Rendimiento en términos de puntajes o logros dentro del juego: Se medirá el éxito del agente en comparación con otros agentes. Dependiendo el entorno se tendra distintos objetivos.
+- Rendimiento en términos de puntajes o logros dentro del juego: Se medirá el éxito del agente en comparación con otros agentes. Dependiendo el entorno se tendrá distintos objetivos.
 
-- Entornos:
+- Entornos de entrenamiento:
     - **Basic:** Escenario rectangular, con un enemigo inmovil en alguna parte. *Objetivo*: matar al enemigo, en la menor cantidad de movimientos.
-    - **Defend the Line:** Escenario rectangular, varios enemigos acercandose y disparando al agente. *Objetivo* matar la mayor cantidad de enemigos antes de morir.  
-    - **Defend the Center:** Escenario circular varios enemigos acercandose y disparnado al agente desde posiciones distintas. *Objetivo* matar la mayor cantidad de enemigos antes de morir.
+    - **Defend the Line:** Escenario rectangular, varios enemigos acercandosé y disparando al agente. *Objetivo* matar la mayor cantidad de enemigos antes de morir. 
+- Entorno de Evaluación: 
+    - **Defend the Center:** Escenario circular varios enemigos acercandosé y disparando al agente desde posiciones distintas. *Objetivo* matar la mayor cantidad de enemigos antes de morir.
 
 #### Actividades a Realizar:
 
@@ -54,7 +55,7 @@ Act 5. 🤖 Implementación de Reinforcement Learning sin Eligibility Traces. [4
 
 Act 6. 🧠 Implementación de Reinforcement Learning con Eligibility Traces. [3 días]
 
-Act 7. 📊 Implementacion de Q-Learning [3 días]
+Act 7. 📊 Implementación de Q-Learning [3 días]
 
 Act 8. 🚀 Ejecución de los experimentos a fin de validar el objetivo y obtener resultados. [4 días]
 
