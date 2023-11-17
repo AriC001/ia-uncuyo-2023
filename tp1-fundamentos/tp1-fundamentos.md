@@ -33,3 +33,6 @@ El area de la etica y los riesgos que pueden tener las IAs se a desarrollado muc
 Por otro lado tenemos los casos en que una IA puede por ejemplo violar la privacidad de una persona, hackear alguna institucion gubernamental, infrinjir leyes de copyright o similares y ahi entraria en juego que tan responsable seria el creador de esa IA, o el usuario que le pidio hacer algo en especifico o si la IA lo hizo por si sola.
 
 Más allá de los debates filosóficos, el desarrollo de la IA también plantea importantes dilemas éticos y de riesgos. La preocupación por la pérdida de empleos debido a la automatización, la vigilancia masiva, los dilemas legales sobre la responsabilidad de los sistemas de IA y la posibilidad de un cambio significativo en la sociedad y la humanidad son temas recurrentes.
+
+
+!["Mapa mental"](./mapa%20mental.png)
