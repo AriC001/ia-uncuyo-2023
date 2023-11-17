@@ -83,3 +83,4 @@ Act 10. 📝 Escritura de informe final. [5 días]
 - [Playing Doom with an AI](https://www.linkedin.com/pulse/playing-doom-ai-s%C3%A9rgio-saraiva/)
 - [Playing DOOM with Deep Reinforcement Learning](https://medium.com/@james.liangyy/playing-doom-with-deep-reinforcement-learning-e55ce84e2930)
 - [Deep Learning – Training an AI to Play Doom](https://www.codeproject.com/Articles/1232713/Deep-Learning-Training-an-AI-to-Play-Doom)
+- [Build a Doom AI Model with Python - Youtube](https://www.youtube.com/watch?v=eBCU-tqLGfQ)
