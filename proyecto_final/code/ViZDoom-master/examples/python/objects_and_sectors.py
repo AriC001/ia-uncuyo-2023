@@ -80,6 +80,16 @@ if __name__ == "__main__":
                 ", z:",
                 state.game_variables[2],
             )
+            state.game_variables[0] = 400
+            print(
+                "Player position: x:",
+                state.game_variables[0],
+                ", y:",
+                state.game_variables[1],
+                ", z:",
+                state.game_variables[2],
+            )
+
             print("Objects:")
 
             # Print information about objects present in the episode.

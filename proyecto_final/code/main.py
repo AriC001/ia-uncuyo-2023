@@ -4,6 +4,8 @@ import numpy as np
 import enviorment
 import cv2
 from stable_baselines3.common.env_checker import check_env
+import vizdoom as vzd
+import time
 ''' game configuration'''
 # # Create DoomGame instance. It will run the game and communicate with you.
 # game = vzd.DoomGame()
@@ -58,7 +60,7 @@ from stable_baselines3.common.env_checker import check_env
 
 
 
-{'''experimental screen buffers tests'''   
+'''experimental screen buffers tests'''   
 # state = game.get_state() #get the state of the game with the screen buffer and game variables
 # img = state.screen_buffer #get the screen buffer, the image that is rendered of the game frame by frame in an array of pixels in RGB24 format
 # print(img)
@@ -73,13 +75,58 @@ from stable_baselines3.common.env_checker import check_env
 # cv2.waitKey(0) # Press Enter to continue
 # exit()
 ''' end of experimental screen buffers tests'''
-}
+
+
+
+
+# It will check your custom environment and output additional warnings if needed
+# exit()
+from stable_baselines3 import PPO, A2C
+from stable_baselines3.common.callbacks import CheckpointCallback
+# grayscaledImg, reward, done, truncated,ammo = env.step(random.choice([0,1,2]))
+# env = enviorment.VizDoom()
+# print(check_env(env))
 
 
 env = enviorment.VizDoom()
-# It will check your custom environment and output additional warnings if needed
-print(check_env(env))
-grayscaledImg, reward, done, truncated,ammo = env.step(random.choice([0,1,2]))
+# Save a checkpoint every 1000 steps
+checkpoint_callback = CheckpointCallback(
+  save_freq=10000,
+  save_path="./proyecto_final/logs/",
+  name_prefix="PPO_model",
+  save_replay_buffer=True,
+  save_vecnormalize=True,
+)
+# # # modelElTr = A2C("CnnPolicy", env, verbose=1,learning_rate=0.003, batch_size=128, gae_lambda=0)
+# # # model2 = A2C("CnnPolicy", env,tensorboard_log="./proyecto_final/tensorLogs" , verbose=1,learning_rate=0.003)
+model = PPO("CnnPolicy", env,tensorboard_log="./proyecto_final/tensorLogs",verbose=1,learning_rate=0.00027, batch_size=64)
+model.learn(total_timesteps = 100000, callback=checkpoint_callback)
+
+del model # remove to demonstrate saving and loading
+del env
+env = enviorment.VizDoom(True)
+
+# model = A2C.load("./proyecto_final/logs/A2C_model_100000_steps")
+model = PPO.load("./proyecto_final/logs/PPO_model_100000_steps")
+# # model = A2C.load("")
+
+cont = 0
+# env.game.new_episode(f"./proyecto_final/replays/episode{cont}_rec.lmp")
+obs, _ = env.reset()
+while True:
+  action, _states = model.predict(obs)
+  # print(_states)
+  # print(action)
+  obs, reward, done, _ ,info = env.step(action)
+  time.sleep(0.028)
+  if done:
+    print("Episode finished, reward:", env.get_total_reward())
+    obs,_ = env.reset()
+    cont +=1
+    if cont == 3:
+      env.game.close()
+      break
+    
 # print("shapee ",grayscaledImg.shape)  
 # print(env.observation_space)
 # cv2.imshow("ViZDoom Depth Buffer", grayscaledImg)
