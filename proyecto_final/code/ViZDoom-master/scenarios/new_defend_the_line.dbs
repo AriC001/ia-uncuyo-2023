@@ -25,9 +25,9 @@ maps
 		}
 		defaulttoptexture = "BRICK12";
 		overridemiddletexture = false;
-		viewpositionx = -192f;
-		viewpositiony = 288f;
-		viewscale = 1.018415f;
+		viewpositionx = -186.1085f;
+		viewpositiony = 246.8727f;
+		viewscale = 1.323939f;
 		overridefloortexture = false;
 		customceilheight = 128;
 		customfloorheight = 0;
@@ -73,8 +73,8 @@ maps
 				resource;
 				tabtype = 0;
 				scripttype = 1;
-				caretposition = 1224;
-				firstvisibleline = 44;
+				caretposition = 1433;
+				firstvisibleline = 37;
 				activetab = true;
 			}
 		}
