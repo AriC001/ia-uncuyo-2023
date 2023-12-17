@@ -1,8 +1,7 @@
 import random
 import os
 import numpy as np
-import enviorment4
-import enviorment
+import enviormentBasic as enviorment
 import cv2
 from stable_baselines3.common.env_checker import check_env
 import vizdoom as vzd
@@ -83,74 +82,62 @@ import time
 # It will check your custom environment and output additional warnings if needed
 # exit()
 from stable_baselines3 import PPO, A2C
+from stable_baselines3.common.sb2_compat.rmsprop_tf_like import RMSpropTFLike
 from stable_baselines3.common.callbacks import CheckpointCallback
 # grayscaledImg, reward, done, truncated,ammo = env.step(random.choice([0,1,2]))
 # env = enviorment.VizDoom()
 # print(check_env(env))
 
 
-env = enviorment4.VizDoom()
-# Save a checkpoint every 1000 steps
+env = enviorment.VizDoom(render=False)
+# # Save a checkpoint every 1000 steps
 checkpoint_callback = CheckpointCallback(
-  save_freq=25000,
-  save_path="./proyecto_final/logs/TurningPPO",
-  name_prefix="PPO_model",
+  save_freq=10000,
+  save_path="./proyecto_final/logs/",
+  name_prefix="A2C_model",
+  # name_prefix="PPO_model",
   save_replay_buffer=True,
   save_vecnormalize=True,
 )
 
-# # modelElTr = A2C("CnnPolicy", env, verbose=1,learning_rate=0.003, batch_size=128, gae_lambda=0)
-# # model2 = A2C("CnnPolicy", env,tensorboard_log="./proyecto_final/tensorLogs" , verbose=1,learning_rate=0.003)
-# model = PPO("CnnPolicy", env,tensorboard_log="./proyecto_final/tensorLogs",verbose=1,learning_rate=0.00027, batch_size=64)
-# model.learn(total_timesteps = 100000, callback=checkpoint_callback)
 
-# remove to demonstrate saving and loading
-# env.close()
+# DQLmodel = DQN("CnnPolicy", env,tensorboard_log="./proyecto_final/tensorLogs",verbose=1,learning_rate=0.00027, batch_size=64)
+# DQLmodel.learn(total_timesteps = 100000, callback=checkpoint_callback)
+# policy_kwargs=dict(optimizer_class=RMSpropTFLike, optimizer_kwargs=dict(eps=1e-5))
+model = A2C("CnnPolicy", env,tensorboard_log="./proyecto_final/tensorLogs",verbose=1,learning_rate=0.00023, n_steps=12,policy_kwargs=dict(optimizer_class=RMSpropTFLike, optimizer_kwargs=dict(eps=1e-5)))
+# model = A2C(policy_kwargs=dict(optimizer_class=RMSpropTFLike, optimizer_kwargs=dict(eps=1e-5)))
+
+model.learn(total_timesteps = 100000, callback=checkpoint_callback)
+
+# del model # remove to demonstrate saving and loading
+# env.game.close()
 # del env
-# env = enviorment4.VizDoom(True)
-# model.set_env(env)
-# model.learn(total_timesteps = 100000, callback=checkpoint_callback2)
-# env.close()
-# del env
-# env = enviorment.VizDoom(True,env_selection="defend_the_line")
+# del DQLmodel
+# env = enviorment2.VizDoom(True)
+# # DQLmodel = DQN.load("./proyecto_final/logs/DQN_model_100000_steps")
+# model = A2C.load("./proyecto_final/logs/A2C_model_100000_steps")
+# # model = PPO.load("./proyecto_final/logs/PPO_model_100000_steps")
+# # # # model = A2C.load("")
 
-
-# env = enviorment.VizDoom(False,env_selection="defend_the_line")
-# model = PPO.load("./proyecto_final/logs/PPO_model_90000_steps")
-# PPO.set_env(model,env)
-# model.learn(total_timesteps = 150000, callback=checkpoint_callback)
-# env.close()
-# del env
-# del model
-
-
-env = enviorment.VizDoom(True,env_selection="defend_the_line")
-model = PPO.load("./proyecto_final/logs/TurningPPO/PPO_model_150000_steps")
-cont = 0
-# # # env.game.new_episode(f"./proyecto_final/replays/episode{cont}_rec.lmp")
-obs, _ = env.reset()
-while True:
-  action, _states = model.predict(obs)
-  # print(_states)
-  # print(action)
-  obs, reward, done, _ ,info = env.step(action)
-  # print("act: ",action," rew: ",env.get_total_reward())
-  time.sleep(0.028)
-  if done:
-    print("Episode finished, reward:", env.get_total_reward())
-    obs,_ = env.reset()
-    cont +=1
-    if cont == 1:
-      env.game.close()
-      break
+# cont = 0
+# # env.game.new_episode(f"./proyecto_final/replays/episode{cont}_rec.lmp")
+# obs, _ = env.reset()
+# while True:
+#   action, _states = model.predict(obs)
+#   # print(_states)
+#   # print(action)
+#   obs, reward, done, _ ,info = env.step(action)
+#   # print(obs.shape, " ", obs[0].shape, " ", obs[1].shape)
+#   time.sleep(0.028)
+#   if done:
+#     print("Episode finished, reward:", env.get_total_reward())
+#     obs,_ = env.reset()
+#     cont +=1
+#     if cont == 1:
+#       env.game.close()
+#       break
     
-# print("shapee ",grayscaledImg.shape)  
-# print(env.observation_space)
-# cv2.imshow("ViZDoom Depth Buffer", grayscaledImg)
-# cv2.waitKey(0)
-# while not done:
-#     grayscaledImg, reward, done, ammo = env.step(random.choice([0,1,2]))
-#     print(env.action_space)
+
 
 '''random movement agent test'''
 # episodes = 5
@@ -168,13 +155,5 @@ while True:
 #     print("Result:", game.get_total_reward()) #print the total reward
 #     time.sleep(2)
 '''end of random movement agent test'''
-
-
-
-
-'''Gym implemetation '''
-
-
-# class CustomEnv(gym.Env):
    
 

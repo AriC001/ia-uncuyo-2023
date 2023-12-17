@@ -34,7 +34,6 @@ class VizDoom(gym.Env):
         # Sets the screen buffer format. Not used here but now you can change it. Default is CRCGCB.
         self.game.set_screen_format(vzd.ScreenFormat.RGB24)
         
-
         # Enables buffer with a top-down map of the current episode/level (turned off by default).
         self.game.set_automap_buffer_enabled(True)
 
@@ -147,7 +146,7 @@ class VizDoom(gym.Env):
             info = {"ammo": 0}
             info["ammo"] = state.game_variables[0]
         else:
-            grayScaledImg = np.zeros(self.observation_space.shape)
+            grayScaledImg = np.zeros(self.observation_space.shape,dtype=np.uint8)
             info = {"ammo": 0}
             # info["ammo"] = state.game_variables[0]
         truncated = False  # Truncation to be handled by the TimeLimit wrapper
@@ -214,7 +213,7 @@ class VizDoom(gym.Env):
         super().reset(seed=seed)
         # if seed is not None:
         #     self.game.set_seed(seed)
-        self.game.new_episode(f"./proyecto_final/replays/episode{cont}_rec.lmp")
+        self.game.new_episode()
         # self.game.new_episode()
         state = self.game.get_state()
         enemy = state.objects[0] if state.objects[0].name == "Cacodemon" else state.objects[1]
@@ -231,7 +230,7 @@ class VizDoom(gym.Env):
             # print("X: ",enemy.position_x,", Y: ",enemy.position_y)
             # print(player.name)
             # print("X: ",player.position_x,", Y: ",player.position_y)
-            self.game.new_episode(f"./proyecto_final/replays/episode{cont}_rec.lmp")
+            self.game.new_episode()
             state = self.game.get_state()
             enemy = state.objects[0] if state.objects[0].name == "Cacodemon" else state.objects[1]
             player = state.objects[0] if state.objects[0].name == "DoomPlayer" else state.objects[1]
