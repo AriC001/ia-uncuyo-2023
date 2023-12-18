@@ -116,6 +116,8 @@ class VizDoom(gym.Env):
         screenBuffer = cv2.cvtColor(screenBuffer,cv2.COLOR_BGR2GRAY)
         # cv2.imshow("oroginal", screenBuffer)
         cropScreenBuffer = screenBuffer[0:405, 0:640]
+        # cv2.imshow("cropped", cropScreenBuffer)
+        # cv2.waitKey(0)
         cropScreenBuffer = cv2.resize(cropScreenBuffer, (160,120), interpolation = cv2.INTER_CUBIC)
         cropScreenBuffer = np.reshape(cropScreenBuffer, (120, 160,1))
         # print(cropScreenBuffer.shape)
