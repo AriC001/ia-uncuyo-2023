@@ -63,7 +63,7 @@ Act 9. 📈 Análisis de los resultados. [4 días]
 
 Act 10. 📝 Escritura de informe final. [5 días]
 
-!["Calendar"](Gannt_Calendar.jpg)
+!["Calendar"](./pics/Gannt_Calendar.jpg)
 
 ### Referencias:
 
