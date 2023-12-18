@@ -1,6 +1,6 @@
-<p style="text-align: center;font-size: 24px;">Proyecto Final </p>
-<p style="text-align: center;font-weight: bold;font-size: 32px;">Inteligencia Artificial </p>
-<p style="text-align: center;font-weight: bold;font-size: 32px;"> DOOM Master </p>
+<div style="text-align: center;font-size: 24px;">Proyecto Final </div>
+<div style="text-align: center;font-weight: bold;font-size: 32px;">Inteligencia Artificial </div>
+<div style="text-align: center;font-weight: bold;font-size: 32px;"> DOOM Master </div>
 
 
 
@@ -25,7 +25,8 @@ Para la creación de los entornos virtuales de DOOM se utilizo la libreria "ViZD
 
 <u>Los entornos que se utilizaron fueron:</u>
 
-- <p style="font-size: 20px;"><b>Basic: (Entrenamiento)</b></p> Este entorno cuenta con un escenerio cuadrado, con un solo enemigo posicionado de manera aleatoria sobre el entorno, y al agente posicionado en el medio de escenario. La idea de este entorno es enseñar al agente a identificar al enemigo, y dispararle lo mas rapido posible.   
+- <div style="font-size: 20px;"><b>Basic: (Entrenamiento)</b></div> Este entorno cuenta con un escenerio cuadrado, con un solo enemigo posicionado de manera aleatoria sobre el entorno, y al agente posicionado en el medio de escenario. La idea de este entorno es enseñar al agente a identificar al enemigo, y dispararle lo mas rapido posible. 
+
     - En este escenario las posibles acciones son, <u><b>Moverse Izquierda, Moverse Derecha, Disparar. </b></u>
     - Los incentivos en este escenario son:
         - -1.2 por cada accion que realiza el agente, 
@@ -36,30 +37,32 @@ Para la creación de los entornos virtuales de DOOM se utilizo la libreria "ViZD
 
     **Esquema del mapa:**
 
-    <p align="center">
+    <div align="center">
   <img src="./pics/basic.png" width="500">
-    <p align="center">(El agente en verde, y en el cuadrado rojo el enemigo)</p> 
-</p> 
+    <div align="center">(El agente en verde, y en el cuadrado rojo el enemigo)</div> 
+</div> 
+<div style="margin-bottom: 20px;"></div>
+<div style="font-weight: bold">Renderizado del juego:
+    <div align="center">
+  <img src="./pics/screenBuffer_Basic.png" width="500"></div>
+    <div align="center"></div> 
+</div> 
+<div style="margin-bottom: 20px;"></div>
+<div style="font-weight: bold">Renderizado que se envia al agente:</div>
+    <div align="center">
+  <img src="./pics/grayBuffer_Basic.png" width="500"></div>
+    <div align="center">Se envia como un variable Box de dimensiones (120,160,1) (altura, ancho, canales o dimensiones)
+</div> 
+<div style="margin-bottom: 20px;"></div>
+<div style="font-weight: bold">Comparación entre el renderizado del juego y el renederizado que se envia al agente:</div>
+    <div align="center">
+  <img src="./pics/screenBufferVSgrayBuffer_Basic.png" width="500"></div>
+    <div align="center">Se escala la imagen a una resolución mucho menor para que el procesamiento sea mas rapido y facil. 
+</div> 
+<div style="margin-bottom: 40px;"></div>
 
-<p style="font-weight: bold">Renderizado del juego:
-    <p align="center">
-  <img src="./pics/screenBuffer_Basic.png" width="500"></p>
-    <p align="center"></p> 
-</p> 
+- <div style="font-size: 20px;"><b>Defend the Line: (Entrenamiento)</b></div> Este escenario cuenta con 3 enemigos que se acercan al agente que se encuentra inmovil, cada vez que un enemigo muere, reaparece con mas vida despues de unos segundos. Este entorno tiene como objetivo enseñar al agente a mantenerse vivo lo maximo posible, ya que el agente cuenta con balas infinitas. 
 
-<p style="font-weight: bold">Renderizado que se envia al agente:
-    <p align="center">
-  <img src="./pics/grayBuffer_Basic.png" width="500"></p>
-    <p align="center">Se envia como un variable Box de dimensiones (120,160,1) (altura, ancho, canales o dimensiones)</p> 
-</p> 
-
-<p style="font-weight: bold">Comparación entre el renderizado del juego y el renederizado que se envia al agente:
-    <p align="center">
-  <img src="./pics/screenBufferVSgrayBuffer_Basic.png" width="500"></p>
-    <p align="center">Se escala la imagen a una resolución mucho menor para que el procesamiento sea mas rapido y facil.</p> 
-</p> 
-
-- <p style="font-size: 20px;"><b>Defend the Line: (Entrenamiento)</b></p> Este escenario cuenta con 3 enemigos que se acercan al agente que se encuentra inmovil, cada vez que un enemigo muere, reaparece con mas vida despues de unos segundos. Este entorno tiene como objetivo enseñar al agente a mantenerse vivo lo maximo posible, ya que el agente cuenta con balas infinitas. 
     - Las posibles acciones son, <u><b>Rotar Izquierda, Rotar Derecha, Disparar. </b></u>
     - Los incentivos en este escenario son:
         - -9 por cada disparo que no acierta sonbre un enemigo.
@@ -69,57 +72,64 @@ Para la creación de los entornos virtuales de DOOM se utilizo la libreria "ViZD
     
     **Esquema del mapa:**
 
-<p align="center">
+<div align="center">
   <img src="./pics/defend_the_line.png" width="500">
-    <p align="center">(El agente en verde, y en los cuadrados rojos los enemigos que se acercan al agente)</p> 
-</p> 
-<p style="font-weight: bold">Renderizado del juego:
-    <p align="center">
-  <img src="./pics/screenBuffer_Line.png" width="500"></p>
-    <p align="center"></p> 
-</p> 
+    <div align="center">(El agente en verde, y en los cuadrados rojos los enemigos que se acercan al agente)</div> 
+</div> 
+<div style="margin-bottom: 20px;"></div>
+<div style="font-weight: bold">Renderizado del juego:
+    <div align="center">
+  <img src="./pics/screenBuffer_Line.png" width="500"></div>
+    <div align="center"></div> 
+</div> 
+<div style="margin-bottom: 20px;"></div>
+<div style="font-weight: bold">Renderizado que se envia al agente:</div>
+    <div align="center">
+  <img src="./pics/grayBuffer_Line.png" width="500"></div>
+    <div align="center">Se envia como un variable Box de dimensiones (120,160,1) (altura, ancho, canales o dimensiones) 
+</div> 
+<div style="margin-bottom: 20px;"></div>
+<div style="font-weight: bold">Comparación entre el renderizado del juego y el renederizado que se envia al agente:</div> 
+    <div align="center">
+  <img src="./pics/screenBufferVSgrayBuffer_Line.png" width="500"></div>
+    <div align="center">Se escala la imagen a una resolución mucho menor para que el procesamiento sea mas rapido y facil.
+</div> 
+<div style="margin-bottom: 40px;"></div>
 
-<p style="font-weight: bold">Renderizado que se envia al agente:
-    <p align="center">
-  <img src="./pics/grayBuffer_Line.png" width="500"></p>
-    <p align="center">Se envia como un variable Box de dimensiones (120,160,1) (altura, ancho, canales o dimensiones)</p> 
-</p> 
+- <div style="font-size: 20px;"><b>Defend the Center:</b></div> Este escenario cuenta con un entorno circular, donde los enemigos se acercan al agente desde 4 direcciones, de las cuales el agente solo puede ver 1 si se queda quieto. El objetivo de este escenario es evaluar que tan bien ha aprendido el agente en los escenarios anterioires.  
 
-<p style="font-weight: bold">Comparación entre el renderizado del juego y el renederizado que se envia al agente:
-    <p align="center">
-  <img src="./pics/screenBufferVSgrayBuffer_Line.png" width="500"></p>
-    <p align="center">Se escala la imagen a una resolución mucho menor para que el procesamiento sea mas rapido y facil.</p> 
-</p> 
-
-- <p style="font-size: 20px;"><b>Defend the Center:</b></p> Este escenario cuenta con un entorno circular, donde los enemigos se acercan al agente desde 4 direcciones, de las cuales el agente solo puede ver 1 si se queda quieto. El objetivo de este escenario es evaluar que tan bien ha aprendido el agente en los escenarios anterioires.  
     - Las posibles acciones son, <u><b>Rotar Izquierda, Rotar Derecha, Disparar. </b></u>
     - Los incentivos en este escenario son:
         - +1 por matar a un enemigo. 
         - -1 por morir.
 
     **Esquema del mapa:**
-<p align="center">
+<div align="center">
   <img src="./pics/defend_the_center.png" width="500">
-    <p align="center">(En el centro el agente, y en los cuadrados rojos los enemigos que se    acercan al agente)</p> 
-</p>  
+    <div align="center">(En el centro el agente, y en los cuadrados rojos los enemigos que se    acercan al agente)</div> 
+</div>  
+<div style="margin-bottom: 20px;"></div>
+<div style="font-weight: bold">Renderizado del juego:
+    <div align="center">
+  <img src="./pics/screenBuffer_Center.png" width="500"></div>
+    <div align="center"></div> 
+</div> 
 
-<p style="font-weight: bold">Renderizado del juego:
-    <p align="center">
-  <img src="./pics/screenBuffer_Center.png" width="500"></p>
-    <p align="center"></p> 
-</p> 
+<div style="margin-bottom: 20px;"></div>
 
-<p style="font-weight: bold">Renderizado que se envia al agente:
-    <p align="center">
-  <img src="./pics/grayBuffer_Center.png" width="500"></p>
-    <p align="center">Se envia como un variable Box de dimensiones (120,160,1) (altura, ancho, canales o dimensiones)</p> 
-</p> 
+<div style="font-weight: bold">Renderizado que se envia al agente:</div>
+    <div align="center">
+  <img src="./pics/grayBuffer_Center.png" width="500">
+    <div align="center">Se envia como un variable Box de dimensiones (120,160,1) (altura, ancho, canales o dimensiones)</div> 
+</div> 
+<div style="margin-bottom: 20px;"></div>
 
-<p style="font-weight: bold">Comparación entre el renderizado del juego y el renederizado que se envia al agente:
-    <p align="center">
-  <img src="./pics/screenBufferVSgrayBuffer_Center.png" width="500"></p>
-    <p align="center">Se escala la imagen a una resolución mucho menor para que el procesamiento sea mas rapido y facil.</p> 
-</p> 
+<div style="font-weight: bold">Comparación entre el renderizado del juego y el renederizado que se envia al agente:</div>
+    <div align="center">
+  <img src="./pics/screenBufferVSgrayBuffer_Center.png" width="500"></div>
+    <div align="center">Se escala la imagen a una resolución mucho menor para que el procesamiento sea mas rapido y facil. </div> 
+
+<div style="margin-bottom: 50px;"></div>
 
 #### Algoritmos Utilizados
 
@@ -151,6 +161,8 @@ En el contexto de DOOM, el agente estaría en un estado particular del juego, re
 
 Q-Learning es elegido como un algoritmo de referencia para comparación debido a su simplicidad, pero dado que el entorno donde se encuentra es muy complejo se espera que no obtenga muy buenos resultados.
 
+<div style="margin-bottom: 50px;"></div>
+
 #### PPO (Proximal Policy Optimization)
 
 **Descripción Teórica:**
@@ -171,22 +183,27 @@ PPO es seleccionado por su capacidad para trabajar con espacios de acciones cont
 
 Implementación tomada de la libreria de Stable Baselines 3
 
+<div style="margin-bottom: 50px;"></div>
 
-#### A2C (Advantage Actor-Critic) o DQN (Deep Q-Network)
+#### DQN (Deep Q-Network)
 
+DQN es un algoritmo de aprendizaje por refuerzo que utiliza redes neuronales profundas para aproximar la función Q en el aprendizaje Q-Learning.
+
+Elementos de DQN:
+
+**Replay Memory:** Para evitar la correlación entre las transiciones ( evitar cierta dependencia o similitud entre estado/acción/recompensa/estado resultante) de los datos de entrenamiento, DQN almacena experiencias pasadas en una memoria de reproducción. Esto permite al algoritmo realizar un muestreo aleatorio de estas experiencias durante el entrenamiento, lo que estabiliza y mejora la convergencia del modelo.
+
+**Target Network:** Para hacer que el entrenamiento sea más estable, DQN emplea dos redes neuronales: una red principal (la DNN) y una red objetivo (target network). La red objetivo se actualiza periódicamente con los pesos de la red principal, lo que suaviza las actualizaciones y hace que el entrenamiento sea más estable.
+
+**Gradien Clipping:** Consiste en limitar la magnitud de los gradientes si estos superan un cierto umbral predefinido. Esto se hace para evitar que los gradientes sean muy grandes, lo que puede llevar a problemas durante el entrenamiento, como la inestabilidad numérica o la explosión del gradiente.
+
+**Justificación de la elección:**
+
+La elección de DQN se justifica gracias a su capacidad de lidiar con complejidades mayores que Q-Learning, como el caso de los entornos de DOOM. Esto permitiria a DQN comprender mejor el entorno y asi poder obtener mejores resultados.
 
 ---
 
 ### Diseño Experimental
-
-
-1 **las métricas** consideradas a fin de establecer el alcance y rendimiento del algoritmo sobre el problema dado. 
-
-2 **las herramientas utilizadas** para la implementación  como así también para medir el rendimiento del algoritmo. (frameworks, simuladores, etc.). 
-
-3 En aquellos casos en donde resulte adecuado, se deberá indicar todo el proceso realizado para la obtención y adecuación del conjunto de datos.
-
-4 Un **detalle y justificación** de los experimentos realizados a fin de determinar los resultados. Este deberá incluir tablas y/o gráficos que resuman los resultados.
 
 La forma en que se evaluo y analizaron los resultados fueron las siguientes:
 
@@ -269,13 +286,26 @@ Las metricas son <u>Promedio de rewards</u> sobre las 30 iteraciones, <u>Desviac
 | 140k                         | 0.63             | 1.09          | 157.6   | 35.30   |
 
 
+### DQN 
+
+**Basic**
+| Iteraciones de entrenamiento | Promedio rewards | Desviacion estandar rewards | Promedio duracion episodio | Desviacion estandar duracion episodio |
+|-----------------------------|------------------|-----------------------------|---------------------------|---------------------------------------|
+| 20.000                      | -175.07          | 130.16         | 158.03 | 70.43 |
+| 40.000                      | -185.01          | 123.22         | 162.40 | 65.90 |
+| 60.000                      | -225.44          | 72.11          | 184.03 | 36.28 |
+| 80.000                      | -197.95          | 101.15         | 171.77 | 50.15 |
+| 100.000                     | -188.38          | 121.74         | 164.23 | 64.06 |
+
+
+
 
 #### Promedio de Rewards con entrenamiento de 100.000 iteraciones
 |Algoritmo | Basic | Defend the Line | Defend the Center|
 |----------|-------|-----------------|------------------|
-|Q-Learning| -176.88  | | |
+|Q-Learning|-176.88| | |
+|DQN       |-188.38| | |
 |PPO       | 63.99 | 344.68 | 2.13|
-|A2C o DQN      | | | |
 
 ----
 
@@ -284,8 +314,7 @@ Las metricas son <u>Promedio de rewards</u> sobre las 30 iteraciones, <u>Desviac
 En esta sección se deberá realizar un mínimo análisis sobre los resultados obtenidos. El objetivo es tratar de razonar sobre las causas de los resultados obtenidos en la fase experimental a fin de proveer una posible justificación. Aquí se incluyen posibles limitaciones en los algoritmos elegidos, en la simulación planteada, los datos, etc.
 
 #### PPO
-A partir de los resultados obtenidos en Basic, se puede observar la gran eficiencia de este algoritmo, que en 40.000 iteraciones pudo identificar al enemigo
-
+A partir de los resultados obtenidos en Basic, se puede observar la gran eficiencia de este algoritmo, que en 40.000 iteraciones pudo identificar al enemigo.
 
 En base a los resultados obtenidos del algoritmo en el escenario de testeo (Defend the Center), se puede observar que a mayor entrenamiento en Defend the Line, peores resultados obtenia. Esto puede deberse a que en Defend the Line se prioriza apuntar a lo primero que se ve y a lo más cercano. Una vez que ese enemigo muere, pasa al siguiente. En cambio en Defend the Center, los enemigos empiezan muy lejos, lo que dificulta el apuntado, y con 1 solo enemigo en el campo de vision del agente. Además, en el escenario hay enemigos más rápidos que otros, por lo que si el agente se queda apuntando a un enemigo lejano que es más lento, los demás enemigos más rápidos empezarán a dañar al agente. Este comportamiento se ve más pronunciado mientras más se entrenó al agente sobre Defend the Line.
 
@@ -294,6 +323,11 @@ En base a los resultados y a una observación del comportamiento del agente en e
 
 (Falta entrenamiento sobre Defend the Line y resultados finales)
 
+#### DQN
+Analizando los datos obtenidos del entrenamiento sobre el entorno Basic, y viendo el comportamiento en el juego, se puede concluir que en la iteracion 100.000 no solo no reconocio al enemigo, sino que es peor que el Q-Learning, ya que el patron que encontró, es desde la pared izquierda y unos pocos pasos a la derecha de la misma, donde la probabilidad del enemigo de aparecer por esa zona esta por encima de la media, pero no lo suficiente como para obtener buenos resultados.
+En las iteraciones anteriores, por ejemplo en la 20.000 se obserba como el agente unicamente se mueve a la izq y dispara, pero si el enemigo se encuentra a la derecha el agente lo "ignora". En cambio en la iteracion 40.000 unicamente se mueve hacia la derecha, obteniendo unos resultados muy similares.
+
+(Falta entrenamiento sobre Defend the Line y resultados finales)
 
 --- 
 
@@ -309,11 +343,19 @@ Una alternativa sería plantear una modificación sobre el segundo escenario, De
 
 En conclusion, aunque se podria seguir experimentando, agregando mas algoritmos o realizando modificaciones a los ya implementados, se puede observar una clara ventaja de los algoritmos de Deep Reinforcement Learning como PPO sobre un algoritmo mas simple como Q-Learning. Donde PPO identificó al enemigo de manera muy rapida, alrededor de 40.000 iteraciones, Q-Learning en 100.000 iteraciones no pudo.
 
-
-Observaciones finales sobre el tema y es muy importante indicar aquellas tareas o experimentos que quedaron sin realizar, pero que eventualmente podrían realizarse en el futuro.
-
 ---
 
 ### Bibliografía
-Incluir la bibliografía utilizada para el trabajo. Es importante referenciar en el cuerpo del trabajo las diferentes fuentes utilizadas.
+
+[1] [Stable-Baselines3](https://stable-baselines3.readthedocs.io/en/master/index.html) - Reliable Reinforcement Learning Implementations. 
+[2] [ViZDoom Documentation]((https://vizdoom.farama.org/)) - Library for developing AI bots that play Doom using visual information.
+[3] [PPO](https://stable-baselines3.readthedocs.io/en/master/modules/ppo.html#ppo-policies) - Proximal Policy Optimization algorithm
+[4] [DQN](https://stable-baselines3.readthedocs.io/en/master/modules/dqn.html) - Deep Q Network
+[5] [Doom AI Model with Python](https://www.youtube.com/watch?v=eBCU-tqLGfQ)
+[6] [OpenCV](https://www.geeksforgeeks.org/opencv-python-tutorial/?ref=lbp) - Open-source library for computer vision, machine learning, and image processing.
+[7] [Q-Learning Algorithm Form Scratch](https://www.youtube.com/watch?v=-LD1Fj76bQg) 
+[8] [Notebook](https://colab.research.google.com/drive/1E2RViy7xmor0mhqskZV14_NUj2jMpJz3#scrollTo=X25vn4VKw2as) on Q-Learning implementation on Python.
+[9] [TensorBoard](https://www.tensorflow.org/tensorboard/get_started?hl=es-419) from TensorFlow - Para graficos del entrenamiento de los modelos.
+[10] [Pytorch](https://pytorch.org/) - Optimized tensor library for deep learning using GPUs and CPUs.
+
 
