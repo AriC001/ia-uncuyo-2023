@@ -1,6 +1,6 @@
-<div style="text-align: center;font-size: 24px;">Proyecto Final </div>
-<div style="text-align: center;font-weight: bold;font-size: 32px;">Inteligencia Artificial </div>
-<div style="text-align: center;font-weight: bold;font-size: 32px;"> DOOM Master </div>
+## <div align="center"> Proyecto Final </div>
+# <div align="center"> Inteligencia Artificial </div>
+# <div align="center"> DOOM Master </div>
 
 
 
@@ -41,25 +41,32 @@ Para la creación de los entornos virtuales de DOOM se utilizo la libreria "ViZD
   <img src="./pics/basic.png" width="500">
     <div align="center">(El agente en verde, y en el cuadrado rojo el enemigo)</div> 
 </div> 
-<div style="margin-bottom: 20px;"></div>
-<div style="font-weight: bold">Renderizado del juego:
+
+&nbsp;
+
+<div><b>Renderizado del juego:</b></div>
     <div align="center">
-  <img src="./pics/screenBuffer_Basic.png" width="500"></div>
+  <img src="./pics/screenBuffer_Basic.png" width="500">
+    </div>
     <div align="center"></div> 
-</div> 
-<div style="margin-bottom: 20px;"></div>
-<div style="font-weight: bold">Renderizado que se envia al agente:</div>
+
+&nbsp;
+
+<div><b>Renderizado que se envia al agente:</b></div>
     <div align="center">
   <img src="./pics/grayBuffer_Basic.png" width="500"></div>
-    <div align="center">Se envia como un variable Box de dimensiones (120,160,1) (altura, ancho, canales o dimensiones)
-</div> 
-<div style="margin-bottom: 20px;"></div>
-<div style="font-weight: bold">Comparación entre el renderizado del juego y el renederizado que se envia al agente:</div>
+    <div align="center">Se envia como un variable Box de dimensiones (120,160,1) (altura, ancho, canales o dimensiones) </div> 
+
+&nbsp;
+
+<div><b>Comparación entre el renderizado del juego y el renederizado que se envia al agente:</b></div>
     <div align="center">
   <img src="./pics/screenBufferVSgrayBuffer_Basic.png" width="500"></div>
     <div align="center">Se escala la imagen a una resolución mucho menor para que el procesamiento sea mas rapido y facil. 
 </div> 
-<div style="margin-bottom: 40px;"></div>
+
+&nbsp;
+&nbsp;
 
 - <div style="font-size: 20px;"><b>Defend the Line: (Entrenamiento)</b></div> Este escenario cuenta con 3 enemigos que se acercan al agente que se encuentra inmovil, cada vez que un enemigo muere, reaparece con mas vida despues de unos segundos. Este entorno tiene como objetivo enseñar al agente a mantenerse vivo lo maximo posible, ya que el agente cuenta con balas infinitas. 
 
@@ -74,27 +81,34 @@ Para la creación de los entornos virtuales de DOOM se utilizo la libreria "ViZD
 
 <div align="center">
   <img src="./pics/defend_the_line.png" width="500">
-    <div align="center">(El agente en verde, y en los cuadrados rojos los enemigos que se acercan al agente)</div> 
+    <div align="center">(El agente en verde, y en el cuadrado rojo el enemigo)</div> 
 </div> 
-<div style="margin-bottom: 20px;"></div>
-<div style="font-weight: bold">Renderizado del juego:
+
+&nbsp;
+
+<div><b>Renderizado del juego:</b></div>
     <div align="center">
-  <img src="./pics/screenBuffer_Line.png" width="500"></div>
+  <img src="./pics/screenBuffer_Line.png" width="500">
+    </div>
     <div align="center"></div> 
-</div> 
-<div style="margin-bottom: 20px;"></div>
-<div style="font-weight: bold">Renderizado que se envia al agente:</div>
+
+&nbsp;
+
+<div><b>Renderizado que se envia al agente:</b></div>
     <div align="center">
   <img src="./pics/grayBuffer_Line.png" width="500"></div>
-    <div align="center">Se envia como un variable Box de dimensiones (120,160,1) (altura, ancho, canales o dimensiones) 
-</div> 
-<div style="margin-bottom: 20px;"></div>
-<div style="font-weight: bold">Comparación entre el renderizado del juego y el renederizado que se envia al agente:</div> 
+    <div align="center">Se envia como un variable Box de dimensiones (120,160,1) (altura, ancho, canales o dimensiones) </div> 
+
+&nbsp;
+
+<div><b>Comparación entre el renderizado del juego y el renederizado que se envia al agente:</b></div>
     <div align="center">
   <img src="./pics/screenBufferVSgrayBuffer_Line.png" width="500"></div>
-    <div align="center">Se escala la imagen a una resolución mucho menor para que el procesamiento sea mas rapido y facil.
+    <div align="center">Se escala la imagen a una resolución mucho menor para que el procesamiento sea mas rapido y facil. 
 </div> 
-<div style="margin-bottom: 40px;"></div>
+
+&nbsp;
+&nbsp;
 
 - <div style="font-size: 20px;"><b>Defend the Center:</b></div> Este escenario cuenta con un entorno circular, donde los enemigos se acercan al agente desde 4 direcciones, de las cuales el agente solo puede ver 1 si se queda quieto. El objetivo de este escenario es evaluar que tan bien ha aprendido el agente en los escenarios anterioires.  
 
@@ -106,30 +120,34 @@ Para la creación de los entornos virtuales de DOOM se utilizo la libreria "ViZD
     **Esquema del mapa:**
 <div align="center">
   <img src="./pics/defend_the_center.png" width="500">
-    <div align="center">(En el centro el agente, y en los cuadrados rojos los enemigos que se    acercan al agente)</div> 
-</div>  
-<div style="margin-bottom: 20px;"></div>
-<div style="font-weight: bold">Renderizado del juego:
+    <div align="center">(El agente en verde, y en el cuadrado rojo el enemigo)</div> 
+</div> 
+
+&nbsp;
+
+<div><b>Renderizado del juego:</b></div>
     <div align="center">
-  <img src="./pics/screenBuffer_Center.png" width="500"></div>
+  <img src="./pics/screenBuffer_Center.png" width="500">
+    </div>
     <div align="center"></div> 
-</div> 
 
-<div style="margin-bottom: 20px;"></div>
+&nbsp;
 
-<div style="font-weight: bold">Renderizado que se envia al agente:</div>
+<div><b>Renderizado que se envia al agente:</b></div>
     <div align="center">
-  <img src="./pics/grayBuffer_Center.png" width="500">
-    <div align="center">Se envia como un variable Box de dimensiones (120,160,1) (altura, ancho, canales o dimensiones)</div> 
-</div> 
-<div style="margin-bottom: 20px;"></div>
+  <img src="./pics/grayBuffer_Center.png" width="500"></div>
+    <div align="center">Se envia como un variable Box de dimensiones (120,160,1) (altura, ancho, canales o dimensiones) </div> 
 
-<div style="font-weight: bold">Comparación entre el renderizado del juego y el renederizado que se envia al agente:</div>
+&nbsp;
+
+<div><b>Comparación entre el renderizado del juego y el renederizado que se envia al agente:</b></div>
     <div align="center">
   <img src="./pics/screenBufferVSgrayBuffer_Center.png" width="500"></div>
-    <div align="center">Se escala la imagen a una resolución mucho menor para que el procesamiento sea mas rapido y facil. </div> 
+    <div align="center">Se escala la imagen a una resolución mucho menor para que el procesamiento sea mas rapido y facil. 
+</div> 
 
-<div style="margin-bottom: 50px;"></div>
+&nbsp;
+&nbsp;
 
 #### Algoritmos Utilizados
 
@@ -139,21 +157,20 @@ Para la creación de los entornos virtuales de DOOM se utilizo la libreria "ViZD
 Q-Learning es un algoritmo de aprendizaje por refuerzo que se basa en la idea de aprender valores de calidad (Q-values) para cada par estado-acción. La idea fundamental es que el agente toma decisiones óptimas seleccionando la acción con el valor Q más alto para un estado dado. Al principio el algoritmo tiene un gran porcentaje de acciones random, o tambien conocido como etapa de exploración, donde se empieza a armar los Q-values.
 
 La fórmula fundamental para actualizar estos valores \(Q\) se expresa de la siguiente manera:
-
-\[
+$`
 Q(s, a) \leftarrow (1 - \alpha) \cdot Q(s, a) + \alpha \cdot \left( r + \gamma \cdot \max_{a'} Q(s', a') \right)
-\]
+`$
 
 Donde:
 
-- \(Q(s, a)\) representa el valor de calidad (Q-value) para el estado \(s\) y la acción \(a\).
-- \(\alpha\) es la tasa de aprendizaje que controla la rapidez con la que el agente actualiza sus estimaciones.
-- \(r\) es la recompensa obtenida al realizar la acción \(a\) en el estado \(s\).
-- \(\gamma\) es el factor de descuento que pondera la importancia de las recompensas futuras.
-- \(s'\) es el siguiente estado después de tomar la acción \(a\) en el estado \(s\).
-- \(a'\) es la acción óptima en el siguiente estado \(s'\).
+- $`Q(s, a)`$ representa el valor de calidad (Q-value) para el estado \(s\) y la acción \(a\).
+- $`\alpha`$ es la tasa de aprendizaje que controla la rapidez con la que el agente actualiza sus estimaciones.
+- $`r`$ es la recompensa obtenida al realizar la acción \(a\) en el estado \(s\).
+- $`\gamma`$ es el factor de descuento que pondera la importancia de las recompensas futuras.
+- $`s'`$ es el siguiente estado después de tomar la acción \(a\) en el estado \(s\).
+- $`a'`$ es la acción óptima en el siguiente estado \(s'\).
 
-La actualización de \(Q(s, a)\) se basa en la diferencia entre la recompensa inmediata (\(r\)) y la recompensa esperada en el próximo estado ponderada por \(\gamma\), que a su vez se maximiza con respecto a todas las posibles acciones \(a'\) en el próximo estado \(s'\). Este proceso de actualización se repite a lo largo de las interacciones del agente con el entorno, permitiéndole mejorar progresivamente sus estimaciones de los valores \(Q\) para tomar decisiones más informadas y maximizar las recompensas esperadas.
+La actualización de $`Q(s, a)`$ se basa en la diferencia entre la recompensa inmediata $`(r)`$ y la recompensa esperada en el próximo estado ponderada por $`\gamma`$, que a su vez se maximiza con respecto a todas las posibles acciones $`a'`$ en el próximo estado $`s'`$. Este proceso de actualización se repite a lo largo de las interacciones del agente con el entorno, permitiéndole mejorar progresivamente sus estimaciones de los valores $`Q`$ para tomar decisiones más informadas y maximizar las recompensas esperadas.
 
 En el contexto de DOOM, el agente estaría en un estado particular del juego, representado como array de (160x160x1) height, weigth, channel o dimmension, de la imagen capturada de la pantalla del juego en ese instante. Q-Learning actualizaría los valores Q para cada par estado-acción en función de las recompensas obtenidas al realizar acciones en ese estado.
 
@@ -348,14 +365,24 @@ En conclusion, aunque se podria seguir experimentando, agregando mas algoritmos 
 ### Bibliografía
 
 [1] [Stable-Baselines3](https://stable-baselines3.readthedocs.io/en/master/index.html) - Reliable Reinforcement Learning Implementations. 
-[2] [ViZDoom Documentation]((https://vizdoom.farama.org/)) - Library for developing AI bots that play Doom using visual information.
-[3] [PPO](https://stable-baselines3.readthedocs.io/en/master/modules/ppo.html#ppo-policies) - Proximal Policy Optimization algorithm
-[4] [DQN](https://stable-baselines3.readthedocs.io/en/master/modules/dqn.html) - Deep Q Network
+
+[2] [ViZDoom Documentation](https://vizdoom.farama.org/) - Library for developing AI bots that play Doom using visual information.
+
+[3] [PPO](https://stable-baselines3.readthedocs.io/en/master/modules/ppo.html#ppo-policies) - Proximal Policy Optimization algorithm.
+
+[4] [DQN](https://stable-baselines3.readthedocs.io/en/master/modules/dqn.html) - Deep Q Network.
+
 [5] [Doom AI Model with Python](https://www.youtube.com/watch?v=eBCU-tqLGfQ)
+
 [6] [OpenCV](https://www.geeksforgeeks.org/opencv-python-tutorial/?ref=lbp) - Open-source library for computer vision, machine learning, and image processing.
+
 [7] [Q-Learning Algorithm Form Scratch](https://www.youtube.com/watch?v=-LD1Fj76bQg) 
+
 [8] [Notebook](https://colab.research.google.com/drive/1E2RViy7xmor0mhqskZV14_NUj2jMpJz3#scrollTo=X25vn4VKw2as) on Q-Learning implementation on Python.
+
 [9] [TensorBoard](https://www.tensorflow.org/tensorboard/get_started?hl=es-419) from TensorFlow - Para graficos del entrenamiento de los modelos.
+
 [10] [Pytorch](https://pytorch.org/) - Optimized tensor library for deep learning using GPUs and CPUs.
+
 
 
