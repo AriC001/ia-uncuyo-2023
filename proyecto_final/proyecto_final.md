@@ -276,18 +276,14 @@ Resultados de 30 iteraciones sobre el escenario Defend the Line, despues de N it
 
 |Iteraciones de entrenamiento (N)| Promedio rewards | Desviacion estandar rewards | Promedio duracion episodio | Desviacion estandar duracion episodio |
 |----------------------------|------------------|-----------------------------|-------------------|---------------------------------------|
-|20.000|
-|40.000|
-|60.000| | | | |
-|80.000| |  |  | |
-|100.000| |  |  | |
+|20.000                      | -1.0             |0                            |96.23              |11.05                                  |
+|40.000| -1.0             |0                            |101.36             |19.42                                 |
+|60.000|- |- |- | -|
+|80.000| -| - | - |- |
+|100.000| -| - | - |- |
 <div align="center"><b>Tabla 2</b></div>
 
-- 20k
-- 40k
-- 60k
-- 80k
-- 100k
+
 &nbsp;
 
 **Defend the Center**
@@ -295,18 +291,14 @@ Resultados de 30 iteraciones sobre el escenario Defend the Center, despues de N 
 
 | Iteraciones de entrenamiento (N)| Promedio rewards | Desviacion estandar rewards | Promedio duracion episodio | Desviacion estandar duracion episodio |
 |----------------------------|------------------|-----------------------------|-------------------|---------------------------------------|
-|20.000|
-|40.000|
-|60.000| | | | |
-|80.000| |  |  | |
-|100.000| |  |  | |
+|20.000|-|-|-|-|
+|40.000|0.46|0.81|172.13|34.43|
+|60.000|-| -| -|- |
+|80.000|- | - | - |- |
+|100.000| -| - | - | -|
 <div align="center"><b>Tabla 3</b></div>
 
-- 20k
-- 40k
-- 60k
-- 80k
-- 100k
+
 
 &nbsp;
 #### PPO
@@ -380,21 +372,19 @@ Resultados de 30 iteraciones sobre el escenario Basic, despues de N iteraciones 
 &nbsp;
 
 **Defend the Line**
+
+<div align="center"><img src="./pics/graficos_DQN_Line.png"><b>Figura 15:</b> Media duracion del episodio, Media puntuacion del episodio (eje Y) sobre cantidad de iteraciones (eje X), en fase de entrenamiento.</div>
+&nbsp;
+
 Resultados de 30 iteraciones sobre el escenario Defend the Line, despues de N iteraciones de entrenamiento.
 | Iteraciones de entrenamiento (N)| Promedio rewards | Desviacion estandar rewards | Promedio duracion episodio | Desviacion estandar duracion episodio |
 |----------------------------|------------------|-----------------------------|-------------------|---------------------------------------|
-|20.000|
-|40.000|
-|60.000| | | | |
-|80.000| |  |  | |
-|100.000| |  |  | |
+|20.000|313.35 | 69.55|1141.5|285.08|
+|40.000|27.36|17.03|167.06|57.64|
+|60.000|423.00 | 51.63| 1447.3|231.10 |
+|80.000|415.34 |  52.89 | 1341.83 |237.60 |
+|100.000| 353.35 | 56.43 |  1163.33 |229.45 |
 <div align="center"><b>Tabla 8</b></div>
-
-- 20k
-- 40k
-- 60k
-- 80k
-- 100k
 
 &nbsp;
 
@@ -403,26 +393,26 @@ Resultados de 30 iteraciones sobre el escenario Defend the Center, despues de N 
 
 | Iteraciones de entrenamiento (N)| Promedio rewards | Desviacion estandar rewards | Promedio duracion episodio | Desviacion estandar duracion episodio |
 |----------------------------|------------------|-----------------------------|-------------------|---------------------------------------|
-|20.000|
-|40.000|
-|60.000| | | | |
-|80.000| |  |  | |
-|100.000| |  |  | |
+|20.000|5.77| 3.21|310.33|109.36|
+|40.000|4.73 |2.96 |276.33|106.55 |
+|60.000|-0.6 | 0.71 |137.6 |21.83 |
+|80.000| -0.3| 0.65 | 134.2 |21.15 |
+|100.000|-0.7 | 0.52 | 133.8 | 16.72 |
 <div align="center"><b>Tabla 9</b></div>
 
-- 20k
-- 40k
-- 60k
-- 80k
-- 100k
+
+ 
 
 &nbsp;
 
 #### Promedio de Rewards con entrenamiento de 100.000 iteraciones
+En este caso tambien se agrego el DQN entrenado con 20.000 iteraciones sobre el segundo escenario ya que tuvo mejores resultados que el entrenado 100.000 iteraciones. (Tabla 8 y Tabla 9)
+
 |Algoritmo | Basic | Defend the Line | Defend the Center|
 |----------|-------|-----------------|------------------|
-|Q-Learning|-176.88| | |
-|DQN       |-188.38| | |
+|Q-Learning (40k)|-176.88|-0.96 |0.46 |
+|DQN       |-188.38| 353.35 |-0.7 |
+|DQN(20k)  |-175.07| 313.35 |5.77 |
 |PPO       | 63.99 | 344.68 | 2.13|
 <div align="center"><b>Tabla 10</b></div>
 
@@ -438,11 +428,11 @@ En el escenario Basic sobre 100.000 iteraciones de entrenamiento.
 &nbsp;
 
 **Defend the Line**
-En el escenario Defend the Line sobre 100.000 iteraciones de entrenamiento.
+En el escenario Defend the Line sobre 30.000 iteraciones de entrenamiento en Q-Learning y 20.000 en DQN.
 | Algoritmo| Promedio rewards | Desviacion estandar rewards | Promedio duracion episodio | Desviacion estandar duracion episodio |
 |-----------------------------|------------------|-----------------------------|---------------------------|---------------------------------------|
-| Q-Learning |
-| DQN        | 
+| Q-Learning (40k) |-1.0             |0                            |96.23              |11.05                                  |
+| DQN       (20k) | 313.35 | 69.55|1141.5|285.08|
 <div align="center"><b>Tabla 12</b></div>
 
 ---
@@ -466,7 +456,9 @@ Analizando los datos obtenidos del entrenamiento sobre el entorno Basic, y viend
 
 En las iteraciones anteriores, por ejemplo en la 20.000 se obserba como el agente unicamente se mueve a la izquierda y dispara, pero si el enemigo se encuentra a la derecha el agente lo "ignora". En cambio en la iteracion 40.000 unicamente se mueve hacia la derecha, obteniendo unos resultados muy similares.
 
-(Falta entrenamiento sobre Defend the Line y resultados finales)
+Los resultados del entrenamiento sobre Defend the Line fueron mucho mejores que en Basic, ya que el algortimo pudo identificar a los enemigos y obtener muy buenos resultados. (Tabla 7 y Tabla 8), este aprendizaje influyó de manera significativa en los resultados en Defend the Center (Tabla 9).
+
+Sobre defend the line, DQN tuvo un comportamiento de usar todas las balas posibles, ya que tenia balas infintas, pero en defend the center, sobre las iteraciones entrenadas 20.000 y 40.000 veces solo disparaba cuando identificaba a un enemigo cercano, obteniendo resultados mucho mejores que sus siguientes etapas con más entrenamiento (Tabla 9).
 
 --- 
 
@@ -474,12 +466,14 @@ En las iteraciones anteriores, por ejemplo en la 20.000 se obserba como el agent
 
 Debido a una falta de tiempo, de conocimientos y de complejidad del proyecto, no se pudo realizar la comparación de algoritmos con y sin Eligibility Traces. La adaptacion de estos algoritmos a un entorno tan comlejo y personalizado se dificultó demasiado. La idea era poder observar si esta caracteristica de actualización de la política es beneficiosa en apliaciones de entrenamiento de agentes para aprender a jugar videojugos o apliaciones similares. 
 
+Tambien agregar debido a una implementación "casera" de Q-Learning, los tiempos de entrenamiento sobre 100.000 iteraciones para basic y 100.000 iteraciones para Defend the Line, fueron extremadamente largos, en total sobre basic duro 2 días de corrido, y sobre defend the line un estimativo de 3 días, lo que produjo que no se pueda terminar a tiempo para tener todos las datos para el informe.
+
 Algunos experimetos que se podria haber probado, sin mucha modificacion sobre lo ya implemtado son:
-Se podria haber experimentado mas con Q-Learning, dando una ventana de exploración mas amplia, y dejandolo correr por mas iteraciones, para observar si el algoritmo es capaz de aprender a identificar al enemigo o no.
+Se podria haber experimentado más con Q-Learning, dando una ventana de exploración mas amplia, y dejandolo correr por mas iteraciones, para observar si el algoritmo es capaz de aprender a identificar al enemigo o no.
 
 Una alternativa sería plantear una modificación sobre el segundo escenario, Defend the Line, para priorizar el apuntado, penalizando más si se falla al disparar, para observar si el comportamiento sobre el ultimo escenario es mejor o no, buscando que priorice enemigos mas cercanos donde el apuntado es más facil.
 
-En conclusion, aunque se podria seguir experimentando, agregando mas algoritmos o realizando modificaciones a los ya implementados, se puede observar una clara ventaja de los algoritmos de Deep Reinforcement Learning como PPO sobre un algoritmo mas simple como Q-Learning. Donde PPO identificó al enemigo de manera muy rapida, alrededor de 40.000 iteraciones, Q-Learning en 100.000 iteraciones no pudo.
+En conclusion, aunque se podria seguir experimentando, agregando mas algoritmos o realizando modificaciones a los ya implementados, se puede observar una clara ventaja de los algoritmos de Deep Reinforcement Learning como PPO sobre un algoritmo mas simple como Q-Learning. Donde PPO identificó al enemigo de manera muy rapida, alrededor de 40.000 iteraciones, Q-Learning en 100.000 iteraciones no pudo. Otra observación interesante fue que en DQN se identifico a los enemigos en el proceso de entrenamiento del segundo escenario (Tabla 8) y no en el primer escenario.
 
 ---
 
