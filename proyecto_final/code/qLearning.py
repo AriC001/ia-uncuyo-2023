@@ -1,5 +1,6 @@
 import numpy as np
 import enviorment4QL as enviorment4
+import enviorment4QL_Line as enviorment4Line
 import csv
 import time
 import utils
@@ -85,8 +86,8 @@ def get_next_action_test(state, q_values):
     action = np.argmax(q_values[state[0][0],state[1][0]])
     return action
 
-q_values = np.load('C:/Users/arico/Documents/UNC/3ro/Inteligencias Artificial/ia-uncuyo-2023-develop/proyecto_final/q_values_episode_80000.npy')
-env = enviorment4.VizDoom(True)
+q_values = np.load('C:/Users/arico/Documents/UNC/3ro/Inteligencias Artificial/GitHub/ia-uncuyo-2023/proyecto_final/logs/Q-Learning/q_values_line_episode_40000.npy')
+env = enviorment4Line.VizDoom(True,env_selection="defend_the_line")
 
 cont = 0
 episode_info = []
